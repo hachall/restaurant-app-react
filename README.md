@@ -1,6 +1,6 @@
 # Venue Order-Ahead App Front-End
 
-React/Redux front end for a responsive order-ahead web app
+React/Redux front end for a responsive order-ahead web app<br/>
 API entry points in src/actions
 
 - home page with map & lisitng view
