@@ -15,7 +15,7 @@ class VenuePage extends Component {
   }
 
   render() {
-    console.log(this.props.menu.items)
+    console.log(this.props.menu)
     if (!this.props.venue) {
       return <p>Loading...</p>;
     }
