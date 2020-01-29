@@ -22,7 +22,6 @@ module.exports = {
       },
       {
         test: /\.s?css$/,
-        exclude: /node_modules/,
         loaders: [ 'style-loader', 'css-loader', 'sass-loader' ]
       },
       {
@@ -30,6 +29,10 @@ module.exports = {
         loader: 'html-loader'
       },
     ]
+  },
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './src'
   },
   resolve: {
     extensions: [ '.js', '.jsx' ]
