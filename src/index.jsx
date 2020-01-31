@@ -16,19 +16,21 @@ const reducers = combineReducers({
 });
 
 const initialState = {
-  menu: []
+  menu: {"restaurant_id": -1, "items": []}
 };
 
 const middlewares = applyMiddleware(reduxPromise, logger);
 
 
 import Router from './router'
+import ComingSoon from './components/coming_soon'
 
 const root = document.getElementById('root');
 if (root) {
   ReactDOM.render(
     <Provider store={createStore(reducers, initialState, middlewares)}>
-      <Router />
+      <ComingSoon/>
+      {/*<Router />*/}
     </Provider>
     ,root);
 }

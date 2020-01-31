@@ -6,6 +6,7 @@ import { createHistory as history } from 'history';
 import routes from './routes'
 import Home from './components/home/home'
 import VenuePage from './components/venue_page/venue_page';
+import Checkout from './components/basket/checkout';
 
 class Router extends Component {
 
@@ -19,6 +20,7 @@ class Router extends Component {
           <Switch>
             <Route  path="/" exact component={Home}  />
             <Route  path="/venues/:id" component={VenuePage}  />
+            <Route  path="/checkout" component={Checkout}  />
           </Switch>
       </BrowserRouter>
     )
