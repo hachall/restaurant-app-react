@@ -20,7 +20,7 @@ class VenueList extends Component {
       <div>
         {this.props.venues.map((venue) => {
           return (
-            <Link to={`/venues/${venue.id}`} key={venue.id}>
+            <Link to={`/venues/${venue.venueid}/${venue.typeid}`} key={venue.venueid}>
               <Venue key={venue.name} venue={venue}/>
             </Link>
           )

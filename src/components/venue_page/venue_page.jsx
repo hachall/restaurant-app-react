@@ -9,13 +9,13 @@ class VenuePage extends Component {
 
   componentDidMount() {
     if (!this.props.venue) {
-      this.props.fetchVenue(this.props.match.params.id);
+      this.props.fetchVenue(this.props.match.params.venueid, this.props.match.params.typeid)
+
     }
-    this.props.fetchMenu(this.props.match.params.id);
+    this.props.fetchMenu(this.props.match.params.venueid, this.props.match.params.typeid);
   }
 
   render() {
-    console.log(this.props.menu)
     if (!this.props.venue) {
       return <p>Loading...</p>;
     }
@@ -26,8 +26,16 @@ class VenuePage extends Component {
           <p>{this.props.venue.desc}</p>
         </div>
         <div>
-          {this.props.menu.items.map((menu_item) => {
-            return (<div className="" key={menu_item[0]}>{`${menu_item[0]}:  £${menu_item[1]}`}</div>)
+          {Object.keys(this.props.menu).map((key, index) => {
+            console.log(this.props.menu[key])
+            return (
+              <div>
+                <h3>{key}</h3>
+                {this.props.menu[key].map((menu_item) => {
+                  return (<div className="" key={menu_item[0]}>{`${menu_item[0]}:  £${menu_item[1]}`}</div>)
+                })}
+              </div>
+            )
           })}
         </div>
         <Link to="/">Back</Link>
@@ -40,8 +48,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state, ownProps) {
-  const idFromUrl = parseInt(ownProps.match.params.id, 10); // From URL
-  const venue = state.venues.find(v => v.id === idFromUrl);
+  const idFromUrl = parseInt(ownProps.match.params.venueid, 10); // From URL
+
+  const venue = state.venues.find(v => v.venueid == idFromUrl);
   return { venue: venue, menu: state.menu };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(VenuePage);

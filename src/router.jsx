@@ -19,7 +19,7 @@ class Router extends Component {
       <BrowserRouter>
           <Switch>
             <Route  path="/" exact component={Home}  />
-            <Route  path="/venues/:id" component={VenuePage}  />
+            <Route  path="/venues/:venueid/:typeid" component={VenuePage}  />
             <Route  path="/checkout" component={Checkout}  />
           </Switch>
       </BrowserRouter>

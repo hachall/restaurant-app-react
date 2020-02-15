@@ -1,38 +1,50 @@
 // DUMMY VENUE DATA
 import venues from './venues'
 import menus from './menus'
+const ROOT_URL = "https://fncflnxl03.execute-api.eu-west-2.amazonaws.com/testing"
+const proxyurl = "https://cors-anywhere.herokuapp.com/"
 
 export const FETCH_VENUES = 'FETCH_VENUES';
 export function setVenues() {
   // TODO: Api call! For now, simulate a DB
+  const promise = fetch(`${proxyurl}${ROOT_URL}/get-venues`, {headers: {'Access-Control-Allow-Origin': '*'}})
+    .then(response => response.json())
+    .then((data => {
+      return JSON.parse(data.body)
+    }))
 
-  return {
-    type: FETCH_VENUES,
-    payload: venues
-  }
+    return {
+      type: FETCH_VENUES,
+      payload: promise
+    }
 }
 
 export const FETCH_VENUE = 'FETCH_VENUE';
-export function fetchVenue(id) {
-  // MOVE TO API
-  // const promise = fetch(`${ROOT_URL}/${id}?key=${API_KEY}`)
-  //   .then(response => response.json());
-  // console.log(venues.find(v => v.id == 1))
-  const venue = venues.find(v => v.id == id);
-  return {
-    type: FETCH_VENUE,
-    payload: venue
-}; }
+export function fetchVenue(venueid, typeid) {
+  const promise = fetch(`${proxyurl}${ROOT_URL}/get-venue?venueid=${venueid}&typeid=${typeid}`, {headers: {'Access-Control-Allow-Origin': '*'}})
+    .then(response => response.json())
+    .then((data => {
+      return [JSON.parse(data.body)]
+    }))
+
+    return {
+      type: FETCH_VENUE,
+      payload: promise
+    }
+}
 
 
 export const FETCH_MENU = 'FETCH_MENU';
-export function fetchMenu(id) {
-  // MOVE TO API
-  // const promise = fetch(`${ROOT_URL}/${id}?key=${API_KEY}`)
-  //   .then(response => response.json());
-  // console.log(venues.find(v => v.id == 1))
-  const menu = menus.find(m=> m.restaurant_id == id);
-  return {
-    type: FETCH_MENU,
-    payload: menu
-}; }
+export function fetchMenu(venueid, typeid) {
+  const promise = fetch(`${proxyurl}${ROOT_URL}/get-menu?venueid=${venueid}&typeid=${typeid}`, {headers: {'Access-Control-Allow-Origin': '*'}})
+    .then(response => response.json())
+    .then((data => {
+      console.log(data.body)
+      return JSON.parse(data.body)
+    }))
+
+    return {
+      type: FETCH_MENU,
+      payload: promise
+    }
+}

@@ -16,7 +16,8 @@ const reducers = combineReducers({
 });
 
 const initialState = {
-  menu: {"restaurant_id": -1, "items": []}
+  venues: [],
+  menu: {}
 };
 
 const middlewares = applyMiddleware(reduxPromise, logger);
