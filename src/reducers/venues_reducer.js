@@ -11,7 +11,7 @@ const venuesReducer = (state, action) => {
     case FETCH_VENUES:
       return action.payload;
     case FETCH_VENUE:
-      return [action.payload]
+      return action.payload;
     default:
       return state;
   }
