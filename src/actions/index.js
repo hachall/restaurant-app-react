@@ -48,3 +48,13 @@ export function fetchMenu(venueid, typeid) {
       payload: promise
     }
 }
+
+
+export const EMPTY_MENU = 'EMPTY_MENU';
+export function emptyMenu(venueid, typeid) {
+
+    return {
+      type: EMPTY_MENU,
+      payload: []
+    }
+}
