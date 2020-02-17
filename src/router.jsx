@@ -7,6 +7,7 @@ import routes from './routes'
 import Home from './components/home/home'
 import VenuePage from './components/venue_page/venue_page';
 import Checkout from './components/basket/checkout';
+import NavBar from './components/navbar';
 
 class Router extends Component {
 
@@ -17,6 +18,7 @@ class Router extends Component {
     return (
 
       <BrowserRouter>
+          <NavBar/>
           <Switch>
             <Route  path="/" exact component={Home}  />
             <Route  path="/venues/:venueid/:typeid" component={VenuePage}  />
