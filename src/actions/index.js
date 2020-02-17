@@ -39,7 +39,6 @@ export function fetchMenu(venueid, typeid) {
   const promise = fetch(`${proxyurl}${ROOT_URL}/get-menu?venueid=${venueid}&typeid=${typeid}`, {headers: {'Access-Control-Allow-Origin': '*'}})
     .then(response => response.json())
     .then((data => {
-      console.log(data.body)
       return JSON.parse(data.body)
     }))
 
