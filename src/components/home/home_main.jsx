@@ -11,7 +11,7 @@ class HomeMain extends Component {
 
       <div>
         <HomeDesktop />
-        <HomeMain />
+        <HomeMobile />
 
       </div>
     )
