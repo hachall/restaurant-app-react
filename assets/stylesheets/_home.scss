@@ -7,3 +7,58 @@
   font-weight: bold;
   margin-right: 20px;
 }
+
+.home-main {
+  width: 100vw;
+  height: calc(100vh - 190px);
+}
+
+.venues-container {
+  height: 100%;
+  background-color: orange;
+  overflow: scroll;
+}
+
+.map-box {
+  height: 100%;
+  width: 100%;
+  background-color: purple;
+}
+
+.home-desktop {
+  height: 100%;
+  display: flex;
+  .venues-container {
+    flex-grow: 1;
+  }
+
+  .map-box {
+    // width: 10%;
+  }
+}
+
+.home-mobile {
+  height: 100%;
+  .venues-container {
+    width: 100%;
+  }
+
+  .map-box {
+    // width: 100%;
+    // display: none;
+  }
+}
+
+.map-open {
+  width: 60%;
+}
+.map-closed {
+  width: 10%;
+}
+.mobile-on {
+  height: 100%;
+  display: block;
+}
+.mobile-off {
+  display: none;
+}
