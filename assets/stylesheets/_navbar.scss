@@ -1,6 +1,15 @@
 .navbar {
   width: 100vw;
   height: 70px;
-  background-color: red;
+  padding: 10px 20px;
+  // background-color: red;
   border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  color: $main-blue;
+  font-size: 30px;
 }

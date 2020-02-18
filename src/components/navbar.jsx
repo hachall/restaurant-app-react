@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-// import { GiHamburger } from "react-icons/gi";
+import { GiHamburger } from "react-icons/gi";
 
 class NavBar extends Component {
 
@@ -8,7 +8,7 @@ class NavBar extends Component {
   render() {
     return (
       <div className="navbar">
-        <GiHamburger />
+        <GiHamburger className="navbar-logo"/>
       </div>
     )
   }
