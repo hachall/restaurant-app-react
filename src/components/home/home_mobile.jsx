@@ -1,14 +1,43 @@
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import VenuesContainer from './venues_container'
+import MapBox from './map_box'
 
 class HomeMobile extends Component {
 
   render() {
+    let mobile_venues_classes = ""
+    let mobile_map_classes = ""
+
+    if (this.props.map_state) {
+      mobile_venues_classes += "mobile-off"
+      mobile_map_classes += "mobile-on"
+    } else {
+      mobile_map_classes += "mobile-off"
+      mobile_venues_classes += "mobile-on"
+    }
+
 
     return (
 
-      <div></div>
+      <div className="home-mobile">
+        <div className={mobile_venues_classes}>
+          <VenuesContainer/>
+        </div>
+        <div className={mobile_map_classes}>
+          <MapBox/>
+        </div>
+      </div>
     )
   }
 }
 
-export default HomeMobile;
+function mapStateToProps(state) {
+  return {
+    map_state: state.map
+  };
+}
+
+export default connect(mapStateToProps, null)(HomeMobile);

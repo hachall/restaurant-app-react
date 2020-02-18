@@ -57,3 +57,11 @@ export function emptyMenu(venueid, typeid) {
       payload: []
     }
 }
+
+export const TOGGLE_MAP = 'TOGGLE_MAP';
+export function toggleMap() {
+
+    return {
+      type: TOGGLE_MAP
+    }
+}

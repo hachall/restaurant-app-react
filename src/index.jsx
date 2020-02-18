@@ -9,15 +9,18 @@ import reduxPromise from 'redux-promise';
 
 import venuesReducer from './reducers/venues_reducer'
 import menuReducer from './reducers/menu_reducer'
+import mapReducer from './reducers/map_reducer'
 
 const reducers = combineReducers({
   venues: venuesReducer,
-  menu: menuReducer
+  menu: menuReducer,
+  map: mapReducer
 });
 
 const initialState = {
   venues: [],
-  menu: {}
+  menu: {},
+  map: false
 };
 
 const middlewares = applyMiddleware(reduxPromise, logger);
