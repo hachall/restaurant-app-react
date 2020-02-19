@@ -23,7 +23,7 @@ class NavBarSearch extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
 
-          <input className="nav-searchbar" type="text" placeholder="What you looking for?" value={this.state.value} onChange={this.handleChange} />
+          <input className="nav-searchbar" type="text" placeholder="What are you looking for?" value={this.state.value} onChange={this.handleChange} />
 
         {/*<input type="submit" value="Submit" />*/}
       </form>
