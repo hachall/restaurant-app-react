@@ -16,7 +16,11 @@ const useStyles = makeStyles({
 });
 
 function valuetext(value) {
-  return `${value}°C`;
+  let str = ""
+  for (let i = 0 ; i < value ; i++) {
+    str += "£"
+  }
+  return `${str}`;
 }
 
 const marks = [
@@ -40,7 +44,7 @@ const marks = [
 
 export default function RangeSlider() {
   const classes = useStyles();
-  const [value, setValue] = React.useState([20, 37]);
+  const [value, setValue] = React.useState([0, 3]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -53,6 +57,8 @@ export default function RangeSlider() {
         onChange={handleChange}
         valueLabelDisplay="auto"
         aria-labelledby="range-slider"
+        getAriaLabel={valuetext}
+        valueLabelFormat={valuetext}
         getAriaValueText={valuetext}
         valueLabelDisplay="auto"
         defaultValue={[0, 3]}

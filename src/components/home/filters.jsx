@@ -18,7 +18,7 @@ class Filters extends Component {
       width: window.innerWidth,
       restaurants: true,
       cafes: true,
-      bars: false,
+      bars: true,
       pickup: true
     };
 
@@ -36,6 +36,21 @@ class Filters extends Component {
       this.setState({ width: window.innerWidth });
   };
 
+  toggleMode = () => {
+    this.setState({pickup: !this.state.pickup})
+  }
+
+  toggleType = (e) => {
+      console.log(e.target.dataset.type)
+      let type = e.target.dataset.type
+      this.setState({
+        restaurants: (type == "restaurants") ? !this.state.restaurants : this.state.restaurants,
+        cafes: (type == "cafes") ? !this.state.cafes : this.state.cafes,
+        bars: (type == "bars") ? !this.state.bars : this.state.bars,
+
+      })
+    }
+
   render() {
     const { width } = this.state;
     const isMobile = width <= 600;
@@ -48,6 +63,10 @@ class Filters extends Component {
     }
 
 
+    let toggles_classes = "filters-toggle"
+    if (isMobile) {
+      toggles_classes += " toggles-mobile"
+    }
 
 
     return (
@@ -55,9 +74,9 @@ class Filters extends Component {
         <div>
           <div className={row_one_classes}>
             <div className="type-buttons">
-              <div className={(this.state.restaurants) ? "type-button type-selected" : "type-button type-deselected"}>Restaurants</div>
-              <div className={(this.state.cafes) ? "type-button type-selected" : " type-button type-deselected"}>Cafes</div>
-              <div className={(this.state.bars) ? "type-button type-selected" : " type-button type-deselected"}>Bars</div>
+              <div onClick={this.toggleType} data-type="restaurants" className={(this.state.restaurants) ? "type-button type-selected" : "type-button type-deselected"}>Restaurants</div>
+              <div onClick={this.toggleType} data-type="cafes" className={(this.state.cafes) ? "type-button type-selected" : " type-button type-deselected"}>Cafes</div>
+              <div onClick={this.toggleType} data-type="bars" className={(this.state.bars) ? "type-button type-selected" : " type-button type-deselected"}>Bars</div>
             </div>
             <div className="price-slider-cntnr">
               <p className="price-icon">£</p>
@@ -71,11 +90,11 @@ class Filters extends Component {
             <SortDropdown/>
           </div>
         </div>
-        <div className="filters-toggle">
+        <div className={toggles_classes}>
 
-          <div className={(this.state.pickup) ? "eatmode-toggle eatmode-selected" : "eatmode-toggle eatmode-deselected"}><GiWalk className="toggle-icon"/> Pick Up</div>
-          <div className={(!this.state.pickup) ? "eatmode-toggle eatmode-selected" : "eatmode-toggle eatmode-deselected"}><GiTabletopPlayers className="toggle-icon"/> Eat In</div>
-          <div className="eatmode-toggle" id="map-toggle" onClick={this.props.toggleMap}>Map</div>
+          <div onClick={this.toggleMode} className={(this.state.pickup) ? "eatmode-toggle eatmode-selected" : "eatmode-toggle eatmode-deselected"}><GiWalk className="toggle-icon"/> Pick Up</div>
+          <div onClick={this.toggleMode} className={(!this.state.pickup) ? "eatmode-toggle eatmode-selected" : "eatmode-toggle eatmode-deselected"}><GiTabletopPlayers className="toggle-icon"/> Eat In</div>
+          <div className="eatmode-toggle" id="map-toggle" onClick={this.props.toggleMap}>{(this.props.map_state) ? "List" : "Map"}</div>
 
         </div>
       </div>

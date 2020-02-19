@@ -1,6 +1,6 @@
 .filters {
   width: 100vw;
-  height: 120px;
+  min-height: 120px;
   // background-color: blue;
   padding: 15px 15px;
 
@@ -33,23 +33,23 @@
 }
 
 .type-deselected {
-  color: $main-blue;
+  border: 2px solid $lighter-grey;
+  color: $grey;
   background-color: white;
 
   &:hover {
-    color: white;
-    background-color: $main-blue;
+    transform: scale(1.05);
   }
 }
 
 
 .type-selected {
+  border: 2px solid $main-blue;
   background-color: $main-blue;
   color: white;
 
   &:hover {
-    background-color: white;
-    color: $main-blue;
+    transform: scale(1.05);
   }
 }
 
@@ -113,6 +113,11 @@
   display: flex;
 }
 
+.toggles-mobile {
+  justify-content: center;
+  margin-top: 10px;
+}
+
 .eatmode-toggle {
   cursor: pointer;
   font-size: 18px;
@@ -128,16 +133,17 @@
 }
 
 .eatmode-selected {
-  border: 2px solid $grey;
+  border: 2px solid $lighter-grey;
 }
 
 .toggle-icon {
   font-size: 24px;
-  color: $light-purple;
+  color: $main-blue;
 }
 
 #map-toggle {
   padding-top: 10px;
+  width: 56px;
 }
 
 
