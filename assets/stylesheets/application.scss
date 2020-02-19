@@ -4,9 +4,12 @@
 @import 'navbar';
 @import 'filters';
 
-body {
+html, body {
   font-family: Helvetica;
   margin: 0px;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
 }
 
 #root {
