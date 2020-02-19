@@ -3,6 +3,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { toggleMap } from '../../actions'
 
+import RangeSlider from "./slider"
+import SortDropdown from "./dropdown"
+
 
 class Filters extends Component {
   constructor(props) {
@@ -20,8 +23,6 @@ class Filters extends Component {
       window.addEventListener('resize', this.handleWindowSizeChange);
   }
 
-    // make sure to remove the listener
-    // when the component is not mounted anymore
   componentWillUnmount() {
       window.removeEventListener('resize', this.handleWindowSizeChange);
   }
@@ -35,11 +36,12 @@ class Filters extends Component {
     const isMobile = width <= 600;
     let top_classes = "filters";
     let row_one_classes = "filters-row-one";
-    let row_two_classes = "filters-row-one filters-flex";
+    let row_two_classes = "filters-row-two";
     if (!isMobile) {
       top_classes += " filters-flex";
       row_one_classes += " filters-flex";
     }
+
 
     return (
       <div className={top_classes}>
@@ -51,12 +53,21 @@ class Filters extends Component {
               <div className={(this.state.bars) ? "type-button type-selected" : " type-button type-deselected"}>Bars</div>
             </div>
             <div className="price-slider-cntnr">
-
+              <p className="price-icon">£</p>
+              <div className={""}>
+                <RangeSlider/>
+              </div>
             </div>
           </div>
-          <div className={row_two_classes}></div>
+          <div className={row_two_classes}>
+            <p>Sort by: </p>
+            <SortDropdown/>
+          </div>
         </div>
-        <div>
+        <div className="filters-toggle">
+
+          <div className="eatmode-toggle">Eat In</div>
+          <div className="eatmode-toggle">Pick Up</div>
           <div className="dummy-button" onClick={this.props.toggleMap}>click here</div>
 
         </div>
