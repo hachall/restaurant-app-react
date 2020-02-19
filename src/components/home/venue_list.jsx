@@ -14,6 +14,9 @@ class VenueList extends Component {
   }
 
   render() {
+    if (!this.props.venues) {
+      return <p>Loading...</p>;
+    }
 
     return (
 
