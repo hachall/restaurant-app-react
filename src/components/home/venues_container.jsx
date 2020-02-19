@@ -8,7 +8,7 @@ class VenuesContainer extends Component {
 
     return (
       <div className="venues-container">
-        <h2>Venues...</h2>
+        <h2>Venues in SW7</h2>
         <VenueList/>
       </div>
     )
