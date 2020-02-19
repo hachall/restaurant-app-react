@@ -49,7 +49,7 @@ class NavBar extends Component {
             <div className="navbar-section">
               <div className="navbar-basket">
                 <GiShoppingCart className="nav-basket-icon navbar-icon"/>
-                <div className="basket-cost">£9.99</div>
+                <div className="basket-cost">£0.00</div>
               </div>
               <div className="navbar-sign-in">
                 Sign Up

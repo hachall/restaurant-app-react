@@ -3,6 +3,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { toggleMap } from '../../actions'
 
+import { GiWalk } from "react-icons/gi";
+import { GiTabletopPlayers } from "react-icons/gi";
+import { GiTreasureMap } from "react-icons/gi";
+
 import RangeSlider from "./slider"
 import SortDropdown from "./dropdown"
 
@@ -14,7 +18,8 @@ class Filters extends Component {
       width: window.innerWidth,
       restaurants: true,
       cafes: true,
-      bars: false
+      bars: false,
+      pickup: true
     };
 
   }
@@ -43,6 +48,8 @@ class Filters extends Component {
     }
 
 
+
+
     return (
       <div className={top_classes}>
         <div>
@@ -66,9 +73,9 @@ class Filters extends Component {
         </div>
         <div className="filters-toggle">
 
-          <div className="eatmode-toggle">Eat In</div>
-          <div className="eatmode-toggle">Pick Up</div>
-          <div className="dummy-button" onClick={this.props.toggleMap}>click here</div>
+          <div className={(this.state.pickup) ? "eatmode-toggle eatmode-selected" : "eatmode-toggle eatmode-deselected"}><GiWalk className="toggle-icon"/> Pick Up</div>
+          <div className={(!this.state.pickup) ? "eatmode-toggle eatmode-selected" : "eatmode-toggle eatmode-deselected"}><GiTabletopPlayers className="toggle-icon"/> Eat In</div>
+          <div className="eatmode-toggle" id="map-toggle" onClick={this.props.toggleMap}>Map</div>
 
         </div>
       </div>

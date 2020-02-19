@@ -113,9 +113,31 @@
   display: flex;
 }
 
+.eatmode-toggle {
+  cursor: pointer;
+  font-size: 18px;
+  color: $dark;
+  height: 42px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  align-text: center;
+  vertical-align: middle;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
 
+.eatmode-selected {
+  border: 2px solid $grey;
+}
 
+.toggle-icon {
+  font-size: 24px;
+  color: $light-purple;
+}
 
-
+#map-toggle {
+  padding-top: 10px;
+}
 
 
