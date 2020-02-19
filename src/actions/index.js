@@ -10,6 +10,7 @@ export function setVenues() {
   const promise = fetch(`${proxyurl}${ROOT_URL}/get-venues`, {headers: {'Access-Control-Allow-Origin': '*'}})
     .then(response => response.json())
     .then((data => {
+      console.log(data)
       return JSON.parse(data.body)
     }))
 
