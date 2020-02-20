@@ -40,7 +40,20 @@
     transform: scale(1.02);
     text-decoration: none;
   }
+
+  width: 90%;
+  margin-bottom: 20px;
 }
+
+
+
+@media (min-width: 600px) {
+  .venue-card {
+    width: 100%;
+    margin-bottom: 0px;
+  }
+}
+
 
 .container {
   margin: 0px 20px !important;
@@ -123,13 +136,6 @@
   top: 75px;
   color: $pink;
 }
-
-
-
-
-
-
-
 
 
 .loader {
