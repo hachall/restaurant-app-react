@@ -49,6 +49,7 @@ class VenuePage extends Component {
       if (isMobile) {
         return (
           <div className="venue-page-mobile">
+            <VenueContent venue={this.props.venue} menu={this.props.menu}/>
           </div>
         );
       } else {

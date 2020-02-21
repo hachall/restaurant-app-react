@@ -37,3 +37,103 @@
   margin-left: 35%;
 }
 
+.venue-page {
+  padding: 30px 20px;
+  overflow: scroll;
+  position: relative;
+}
+
+.venue-item {
+
+}
+
+.venue-item > h3 {
+  color: $main-blue;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.venue-item > p {
+  font-size: 18px;
+  color: $grey;
+}
+
+.venue-address {
+  font-style: italic;
+}
+
+.venue-pin {
+  color: $pink;
+  font-size: 30px;
+}
+
+.venue-menu {
+  margin-top: 25px;
+}
+
+.menu-title {
+  color: $main-blue;
+}
+
+
+.menu-item {
+  width: 100%;
+  padding: 20px 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-radius: 5px;
+  margin-bottom: 15px;
+}
+
+
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $dark;
+  &:hover {
+    transform: scale(1.01)
+  }
+}
+
+.price-bold {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.menu-item-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu {
+  min-height: 40px;
+}
+
+.menu-loader {
+  height: 500px;
+}
+
+.price-toggle {
+  margin-left: 15px;
+  font-size: 24px;
+}
+.price-btns {
+  color: $pink;
+  cursor: pointer;
+}
+
+.back-button {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  color: $main-blue;
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+

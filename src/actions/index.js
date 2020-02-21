@@ -41,7 +41,9 @@ export function fetchMenu(venueid, typeid) {
     .then(response => response.json())
     .then((data => {
       return JSON.parse(data.body)
-    }))
+    })).catch((error) => {
+      console.log(error.message);
+    })
 
     return {
       type: FETCH_MENU,
