@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Container, Row, Col } from 'reactstrap';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -14,20 +15,37 @@ class VenueList extends Component {
   }
 
   render() {
-    if (!this.props.venues) {
-      return <p>Loading...</p>;
+    if (this.props.venues.length == 0) {
+      return (<div className="loader">
+          <div data-v-21dcae14="" className="box" category="animation" text=""><div data-v-21dcae14="" className="bouncingLoader"><div data-v-21dcae14=""></div></div></div>
+        </div>
+      )
     }
 
-    return (
+    let card_classes = "venue-card"
 
+    if (this.props.map) {
+      card_classes += " card-map-mode"
+    }
+
+
+    return (
       <div>
-        {this.props.venues.map((venue) => {
-          return (
-            <Link to={`/venues/${venue.venueid}/${venue.typeid}`} key={venue.venueid}>
-              <Venue key={venue.name} venue={venue}/>
-            </Link>
-          )
-        })}
+        <Container>
+          <Row>
+            {this.props.venues.map((venue) => {
+              return (
+                <Col xs={12} sm={(this.props.map) ? 12 : 4} key={venue.venueid}>
+                  <Link style={{textDecoration: "none"}} to={`/venues/${venue.venueid}/${venue.typeid}`}>
+                    <div className={card_classes}>
+                      <Venue key={venue.name} venue={venue}/>
+                    </div>
+                  </Link>
+                </Col>
+              )
+            })}
+          </Row>
+        </Container>
       </div>
     )
   }
@@ -35,7 +53,7 @@ class VenueList extends Component {
 
 function mapStateToProps(state) {
   return {
-    venues: state.venues
+    venues: state.venues, map: state.map
   };
 }
 

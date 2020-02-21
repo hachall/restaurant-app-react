@@ -8,7 +8,12 @@ class VenuesContainer extends Component {
 
     return (
       <div className="venues-container">
-        <h2>Venues in SW7</h2>
+        <div className="venues-title-container">
+          <h2 className="venues-container-title">Venues in <span className="postcode-text">SW7</span></h2>
+          <div className="change-postcode">
+            <span className="change-bracket">(</span><a href="/" className="change-link">change</a><span className="change-bracket">)</span>
+          </div>
+        </div>
         <VenueList/>
       </div>
     )

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import StarRatings from 'react-star-ratings';
 
 class Venue extends Component {
 
@@ -7,12 +8,25 @@ class Venue extends Component {
     return (
 
       <div className="venue-listing">
-        <div className="venue-listing-title">
-          {this.props.venue.name}
-        </div>
-        <div className="venue-listing-desc">
-          {this.props.venue.desc}
-        </div>
+        <img src={this.props.venue.imgurl} />
+          <div className="card-venue-infos">
+            <div>
+              <h2>{this.props.venue.name}</h2>
+              <p>{this.props.venue.desc}</p>
+            </div>
+            <h2 className="card-venue-pricing">
+              <StarRatings
+                rating={4.5}
+                starRatedColor="#EEC0DB"
+                starEmptyColor="#5D576B"
+                numberOfStars={5}
+                name='rating'
+                starDimension="15px"
+                starSpacing="1px"
+              />
+            </h2>
+            <img src={this.props.venue.logourl} className="card-venue-user avatar-bordered" />
+          </div>
 
       </div>
     )
