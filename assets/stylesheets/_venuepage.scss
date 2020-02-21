@@ -1,0 +1,39 @@
+.venue-content {
+  height: 100%;
+  width: 100%;
+}
+
+.venue-page-mobile {
+  width: 100%;
+}
+.venue-page-desktop {
+  width: 100%;
+  display: flex;
+  padding-top: 15px;
+
+}
+
+.venue-page-left {
+  position: fixed;
+  height: calc(100vh - 63px);
+  width: 35%;
+  display: flex;
+  flex-flow: column;
+}
+
+.venue-page-left > img {
+  height: 40%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.venue-page-mapbox {
+  flex-grow: 1;
+  width: 100%;
+  background-color: $lighter-grey;
+}
+
+.venue-page-right {
+  margin-left: 35%;
+}
+
