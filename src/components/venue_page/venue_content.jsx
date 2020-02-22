@@ -23,6 +23,10 @@ class VenueContent extends Component {
           <h3>{this.props.venue.name}</h3>
           <p>{this.props.venue.desc}</p>
           <p className="venue-address"><span className="venue-pin">{<GiPin/>}</span>{this.props.venue.address}</p>
+          <div className="times">
+            <p>{"Prep time: 25min"}</p>
+            <p>{"Distance: 15min"}</p>
+          </div>
         </div>
         <div className="venue-menu">
           <Menu />

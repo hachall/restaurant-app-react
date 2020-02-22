@@ -34,17 +34,16 @@
 }
 
 .venue-page-right {
+
   margin-left: 35%;
 }
 
 .venue-page {
+  height: calc(100vh - 78px);
+  overflow: scroll;
   padding: 30px 20px;
   overflow: scroll;
   position: relative;
-}
-
-.venue-item {
-
 }
 
 .venue-item > h3 {
@@ -54,6 +53,7 @@
 }
 
 .venue-item > p {
+  text-align: justify;
   font-size: 18px;
   color: $grey;
 }
@@ -68,7 +68,7 @@
 }
 
 .venue-menu {
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 .menu-title {
@@ -80,13 +80,8 @@
   width: 100%;
   padding: 20px 20px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  box-radius: 5px;
+  border-radius: 5px;
   margin-bottom: 15px;
-}
-
-
-
-.menu-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -133,7 +128,13 @@
   align-items: center;
 }
 
-
+.times {
+  color: $grey;
+  display: flex;
+  p {
+    margin-right: 15px;
+  }
+}
 
 
 
