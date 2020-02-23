@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { toggleMap } from '../../actions'
+import PropTypes from 'prop-types';
 
 import { GiWalk } from "react-icons/gi";
 import { GiTabletopPlayers } from "react-icons/gi";
@@ -113,5 +114,10 @@ function mapDispatchToProps(dispatch) {
     {toggleMap: toggleMap },
      dispatch);
 }
+
+Filters.propTypes = {
+  map_state: PropTypes.bool.isRequired
+}
+
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 
 import { fetchVenue } from '../../actions';
 import { fetchMenu } from '../../actions';
@@ -79,6 +80,10 @@ function mapStateToProps(state, ownProps) {
   const venue = state.venues.find(v => v.venueid == idFromUrl);
   return { venue: venue, menu: state.menu };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(VenuePage);
 
-// export default VenuePage;
+VenueContent.propTypes = {
+  venue: PropTypes.object.isRequired,
+  menu: PropTypes.object.isRequired
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(VenuePage);

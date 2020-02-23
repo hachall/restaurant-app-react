@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 
 import VenuesContainer from './venues_container'
 import MapBox from './map_box'
@@ -39,5 +41,10 @@ function mapStateToProps(state) {
     map_state: state.map
   };
 }
+
+HomeMobile.propTypes = {
+  map_state: PropTypes.bool.isRequired
+}
+
 
 export default connect(mapStateToProps, null)(HomeMobile);

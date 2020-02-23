@@ -5,6 +5,7 @@ import { TiPlusOutline } from "react-icons/ti";
 import { TiMinus } from "react-icons/ti";
 import { TiMinusOutline } from "react-icons/ti";
 
+import PropTypes from 'prop-types';
 
 class MenuItem extends Component {
   constructor() {
@@ -28,6 +29,12 @@ class MenuItem extends Component {
         </div>
       </div> );
   }
+}
+
+MenuItem.propTypes = {
+  item: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired
+
 }
 
 export default MenuItem;

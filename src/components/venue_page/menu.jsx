@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import PropTypes from 'prop-types';
+
 import MenuItem from './menu_item';
 
 function isEmpty(obj) {
@@ -42,6 +44,10 @@ function mapStateToProps(state) {
   return {
     menu: state.menu
   };
+}
+
+Menu.propTypes = {
+  menu: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, null)(Menu);

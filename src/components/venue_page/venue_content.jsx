@@ -5,14 +5,13 @@ import { bindActionCreators } from 'redux';
 import { GiPin } from "react-icons/gi";
 import { TiArrowLeftOutline } from "react-icons/ti";
 
+import PropTypes from 'prop-types';
+
 import Menu from './menu'
 
 class VenueContent extends Component {
 
   render() {
-    if (!this.props.venue) {
-      return <p>Loading...</p>;
-    }
     return (
       <div className="venue-page">
         <Link className="back-button" to="/">
@@ -33,6 +32,15 @@ class VenueContent extends Component {
         </div>
       </div> );
   }
+}
+
+VenueContent.propTypes = {
+  venue: PropTypes.object.isRequired,
+  venue: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    desc: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired
+  })
 }
 
 export default VenueContent;
