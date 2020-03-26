@@ -8,6 +8,7 @@ import { fetchMenu } from '../../actions';
 import { emptyMenu } from '../../actions';
 
 import VenueContent from './venue_content'
+import Basket from '../basket/basket'
 
 class VenuePage extends Component {
   constructor() {
@@ -51,6 +52,7 @@ class VenuePage extends Component {
         return (
           <div className="venue-page-mobile">
             <VenueContent venue={this.props.venue} menu={this.props.menu}/>
+            <Basket mobile={true}/>
           </div>
         );
       } else {
@@ -60,6 +62,7 @@ class VenuePage extends Component {
               <img src={this.props.venue.imgurl} alt=""/>
               <div className="venue-page-mapbox">
               </div>
+              <Basket mobile={false}/>
             </div>
             <div className="venue-page-right">
               <VenueContent venue={this.props.venue} menu={this.props.menu}/>
