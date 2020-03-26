@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 import { GiHamburger } from "react-icons/gi";
 import { GiShoppingCart } from "react-icons/gi";
@@ -35,7 +36,9 @@ class NavBar extends Component {
     return (
       <div className="navbar">
         <div className="navbar-section navbar-left">
-          <GiHamburger className="navbar-logo navbar-icon"/>
+          <Link to='/'>
+            <GiHamburger className="navbar-logo navbar-icon"/>
+          </Link>
           <NavBarSearch/>
         </div>
         <div className=" navbar-right">

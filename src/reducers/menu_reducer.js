@@ -9,7 +9,11 @@ const menuReducer = (state, action) => {
   // Handle Venues Actions
   switch (action.type) {
     case FETCH_MENU:
-      return action.payload;
+      if (action.payload) {
+        return action.payload;
+      } else {
+        return state;
+      }
     case EMPTY_MENU:
       return action.payload
     default:

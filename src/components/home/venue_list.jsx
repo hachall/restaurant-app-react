@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import PropTypes from 'prop-types';
+
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -62,4 +64,10 @@ function mapDispatchToProps(dispatch) {
     {setVenues: setVenues },
      dispatch);
 }
+
+VenueList.propTypes = {
+  venues: PropTypes.array.isRequired
+}
+
+
 export default connect(mapStateToProps, mapDispatchToProps)(VenueList);

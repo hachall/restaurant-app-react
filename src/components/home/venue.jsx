@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import StarRatings from 'react-star-ratings';
+import PropTypes from 'prop-types';
+
 
 class Venue extends Component {
 
@@ -32,5 +34,16 @@ class Venue extends Component {
     )
   }
 }
+
+Venue.propTypes = {
+  venue: PropTypes.object.isRequired,
+  venue: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    desc: PropTypes.string.isRequired,
+    imgurl: PropTypes.string.isRequired,
+    logourl: PropTypes.string.isRequired
+  })
+}
+
 
 export default Venue;
