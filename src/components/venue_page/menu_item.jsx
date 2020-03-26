@@ -15,17 +15,32 @@ class MenuItem extends Component {
       };
   }
 
+  incrementValue = () => {
+    this.setState({value: this.state.value + 1})
+  }
+
+  decrementValue = () => {
+    if (this.state.value > 0) {
+      this.setState({value: this.state.value - 1})
+    }
+  }
+
 
   render() {
+    let minus_classes = "price-toggle price-grey"
+    if (this.state.value != 0) {
+      minus_classes += " price-btns"
+    }
+
     return (
       <div className="menu-item">
         <div className="menu-item-left">
           <div className="" key={this.props.item}><span className="item-name">{`${this.props.item}:`}</span><span className="price-bold">{`£${this.props.price}`}</span></div>
         </div>
         <div className="menu-item-right">
-          <TiMinusOutline className="price-toggle price-btns"/>
+          <TiMinusOutline className={minus_classes} onClick={this.decrementValue}/>
           <div className="price-toggle">{this.state.value}</div>
-          <TiPlusOutline className="price-toggle price-btns"/>
+          <TiPlusOutline className="price-toggle price-btns" onClick={this.incrementValue}/>
         </div>
       </div> );
   }
