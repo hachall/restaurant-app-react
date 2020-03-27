@@ -54,16 +54,43 @@ export function fetchMenu(venueid, typeid) {
 
 export const EMPTY_MENU = 'EMPTY_MENU';
 export function emptyMenu(venueid, typeid) {
-
-    return {
-      type: EMPTY_MENU,
-      payload: []
-    }
+  return {
+    type: EMPTY_MENU,
+    payload: []
+  }
 }
 
 export const TOGGLE_MAP = 'TOGGLE_MAP';
 export function toggleMap() {
-    return {
-      type: TOGGLE_MAP
-    }
+  return {
+    type: TOGGLE_MAP
+  }
 }
+
+export const ADD_TO_BASKET = 'ADD_TO_BASKET';
+export function addToBasket(item) {
+  return {
+    type: ADD_TO_BASKET,
+    payload: item
+  }
+}
+
+export const REMOVE_FROM_BASKET = 'REMOVE_FROM_BASKET';
+export function removeFromBasket(item) {
+  return {
+    type: REMOVE_FROM_BASKET,
+    payload: item
+  }
+}
+
+export const EMPTY_BASKET = 'EMPTY_BASKET';
+export function emptyBasket() {
+  return {
+    type: EMPTY_BASKET
+  }
+}
+
+
+
+
+

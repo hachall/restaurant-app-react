@@ -31,7 +31,7 @@ class Menu extends Component {
               <div className="manu-section" key={key}>
                 <h3 className="menu-title">{key}</h3>
                 {this.props.menu[key].map((menu_item) => {
-                  return (<MenuItem key={menu_item[1]} item={menu_item[1]} price={menu_item[2]}/>)
+                  return (<MenuItem key={menu_item[1]} name={menu_item[1]} price={menu_item[2]} venue={this.props.venue}/>)
                 })}
               </div>
             )

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import { GiHamburger } from "react-icons/gi";
 import { GiShoppingCart } from "react-icons/gi";
@@ -52,7 +54,7 @@ class NavBar extends Component {
             <div className="navbar-section">
               <div className="navbar-basket">
                 <GiShoppingCart className="nav-basket-icon navbar-icon"/>
-                <div className="basket-cost">£0.00</div>
+                <div className="basket-cost">{`£${this.props.basket.total}`}</div>
               </div>
               <div className="navbar-sign-in">
                 Sign Up
@@ -68,4 +70,9 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+
+function mapStateToProps(state) {
+  return { basket: state.basket };
+}
+
+export default connect(mapStateToProps, null)(NavBar);

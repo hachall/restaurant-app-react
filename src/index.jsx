@@ -11,17 +11,26 @@ import reduxPromise from 'redux-promise';
 import venuesReducer from './reducers/venues_reducer'
 import menuReducer from './reducers/menu_reducer'
 import mapReducer from './reducers/map_reducer'
+import basketReducer from './reducers/basket_reducer'
 
 const reducers = combineReducers({
   venues: venuesReducer,
   menu: menuReducer,
-  map: mapReducer
+  map: mapReducer,
+  basket: basketReducer
 });
+
+let basket_template = {
+  venue: -1,
+  total: 0.00,
+  items: {}
+}
 
 const initialState = {
   venues: [],
   menu: {},
-  map: false
+  map: false,
+  basket: basket_template
 };
 
 const middlewares = applyMiddleware(reduxPromise, logger);
