@@ -52,7 +52,7 @@ class VenuePage extends Component {
         return (
           <div className="venue-page-mobile">
             <VenueContent venue={this.props.venue} menu={this.props.menu}/>
-            <Basket mobile={true} venueid={this.props.venue.venueid}/>
+            <Basket mobile={true} venue={this.props.venue.name}/>
           </div>
         );
       } else {
@@ -62,7 +62,7 @@ class VenuePage extends Component {
               <img src={this.props.venue.imgurl} alt=""/>
               <div className="venue-page-mapbox">
               </div>
-              <Basket mobile={false} venueid={this.props.venue.venueid}/>
+              <Basket mobile={false} venue={this.props.venue.name}/>
             </div>
             <div className="venue-page-right">
               <VenueContent venue={this.props.venue} menu={this.props.menu}/>
@@ -85,8 +85,7 @@ function mapStateToProps(state, ownProps) {
 }
 
 VenueContent.propTypes = {
-  venue: PropTypes.object.isRequired,
-  menu: PropTypes.object.isRequired
+  venue: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VenuePage);

@@ -83,7 +83,12 @@ export function removeFromBasket(item) {
   }
 }
 
-
+export const EMPTY_BASKET = 'EMPTY_BASKET';
+export function emptyBasket() {
+  return {
+    type: EMPTY_BASKET
+  }
+}
 
 
 
