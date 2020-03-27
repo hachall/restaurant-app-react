@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import VenuesContainer from './venues_container'
-import MapBox from './map_box'
+import MapBox from '../map/map_box'
 
 class HomeDesktop extends Component {
 
@@ -20,7 +20,7 @@ class HomeDesktop extends Component {
       <div className="home-desktop">
         <VenuesContainer/>
         <div className={map_classes}>
-          <MapBox/>
+          <MapBox venues={this.props.venues}/>
         </div>
 
       </div>
@@ -30,7 +30,8 @@ class HomeDesktop extends Component {
 
 function mapStateToProps(state) {
   return {
-    map_state: state.map
+    map_state: state.map,
+    venues: state.venues
   };
 }
 

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 
 import VenuesContainer from './venues_container'
-import MapBox from './map_box'
+import MapBox from '../map/map_box'
 
 class HomeMobile extends Component {
 
