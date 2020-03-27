@@ -28,7 +28,7 @@ class VenueContent extends Component {
           </div>
         </div>
         <div className="venue-menu">
-          <Menu />
+          <Menu venueid={this.props.venue.venueid}/>
         </div>
       </div> );
   }

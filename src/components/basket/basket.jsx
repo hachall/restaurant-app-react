@@ -10,9 +10,11 @@ class Basket extends Component {
     let classes = "basket"
     classes += (this.props.mobile) ? " basket-mobile" : " basket-desktop"
 
-    if (this.props.basket.total == 0 ) {
+    if (this.props.basket.total == 0 || this.props.venueid != this.props.basket.venue) {
       classes += " basket-close"
     }
+
+    console.log(this.props.basket)
 
     return (
       <div className={classes}>
