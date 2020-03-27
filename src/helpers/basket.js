@@ -5,6 +5,10 @@ export function add_item(basket, item) {
     return newBasket
   }
 
+  if (newBasket.venue == -1) {
+    newBasket.venue = item.venue
+  }
+
   newBasket.total += item.price
 
   if (newBasket.items.hasOwnProperty(item.name)) {
@@ -23,8 +27,6 @@ let newBasket = {...basket}
   if (Object.keys(item).length == 0) {
     return newBasket
   }
-
-
 
   if (newBasket.items.hasOwnProperty(item.name)) {
 

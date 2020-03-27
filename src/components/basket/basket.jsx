@@ -10,7 +10,7 @@ class Basket extends Component {
     let classes = "basket"
     classes += (this.props.mobile) ? " basket-mobile" : " basket-desktop"
 
-    if (this.props.basket.total == 0 || this.props.basket.venue != this.props.venueid) {
+    if (this.props.basket.total == 0 ) {
       classes += " basket-close"
     }
 
@@ -18,7 +18,7 @@ class Basket extends Component {
       <div className={classes}>
         <div className="basket-details">
           <div className="basket-left">Basket:</div>
-          <div className="basket-right">£9.99</div>
+          <div className="basket-right">{`£${this.props.basket.total}`}</div>
         </div>
         <div className="co-button">Go To Checkout</div>
       </div>
