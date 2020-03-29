@@ -12,12 +12,14 @@ import venuesReducer from './reducers/venues_reducer'
 import menuReducer from './reducers/menu_reducer'
 import mapReducer from './reducers/map_reducer'
 import basketReducer from './reducers/basket_reducer'
+import postcodeReducer from './reducers/postcode_reducer'
 
 const reducers = combineReducers({
   venues: venuesReducer,
   menu: menuReducer,
   map: mapReducer,
-  basket: basketReducer
+  basket: basketReducer,
+  postcode: postcodeReducer
 });
 
 let basket_template = {
@@ -30,11 +32,11 @@ const initialState = {
   venues: [],
   menu: {},
   map: false,
-  basket: basket_template
+  basket: basket_template,
+  postcode: "SW7"
 };
 
 const middlewares = applyMiddleware(reduxPromise, logger);
-
 
 import Router from './router'
 

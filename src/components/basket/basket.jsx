@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 
 class Basket extends Component {
 
@@ -22,7 +23,9 @@ class Basket extends Component {
           <div className="basket-left">Basket:</div>
           <div className="basket-right">{`£${this.props.basket.total}`}</div>
         </div>
-        <div className="co-button">Go To Checkout</div>
+        <Link to="/checkout">
+          <div className="co-button">Go To Checkout</div>
+        </Link>
       </div>
     )
   }
