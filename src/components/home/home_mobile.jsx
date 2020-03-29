@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 
 import VenuesContainer from './venues_container'
-import MapBox from './map_box'
+import MapBox from '../map/map_box'
 
 class HomeMobile extends Component {
 
@@ -29,7 +29,7 @@ class HomeMobile extends Component {
           <VenuesContainer/>
         </div>
         <div className={mobile_map_classes}>
-          <MapBox/>
+          <MapBox venues={this.props.venues} center={[-0.1749, 51.4988]} zoom={[15]}/>
         </div>
       </div>
     )
@@ -38,7 +38,8 @@ class HomeMobile extends Component {
 
 function mapStateToProps(state) {
   return {
-    map_state: state.map
+    map_state: state.map,
+    venues: state.venues
   };
 }
 
