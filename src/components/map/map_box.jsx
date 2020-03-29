@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import ReactMapboxGl, { Layer, Feature, Marker } from 'react-mapbox-gl';
+import ReactMapboxGl, { Layer, Feature, Marker, Popup } from 'react-mapbox-gl';
 
-
+import MapFeatures from './map_features'
 
 class MapBox extends Component {
 
@@ -25,20 +25,11 @@ class MapBox extends Component {
           height: '100%',
           minWidth: '100%'
         }}
-        zoom={[16]}
-        center={[-0.1749, 51.4988]}
+        zoom={this.props.zoom}
+        center={this.props.center}
       >
-        {this.props.venues.map((venue) => {
-          return (
-            <Marker
-              coordinates={[venue.longitude, venue.latitude]}
-              className="marker"
-              anchor="bottom"
-            >
 
-            </Marker>
-          )
-        })}
+        <MapFeatures venues={this.props.venues}/>
 
       </Map>
 

@@ -9,6 +9,7 @@ import { emptyMenu } from '../../actions';
 
 import VenueContent from './venue_content'
 import Basket from '../basket/basket'
+import MapBox from '../map/map_box'
 
 class VenuePage extends Component {
   constructor() {
@@ -61,6 +62,7 @@ class VenuePage extends Component {
             <div className="venue-page-left">
               <img src={this.props.venue.imgurl} alt=""/>
               <div className="venue-page-mapbox">
+                <MapBox venues={[this.props.venue]} center={[this.props.venue.longitude, this.props.venue.latitude]} zoom={[16]} />
               </div>
               <Basket mobile={false} venue={this.props.venue.name}/>
             </div>
