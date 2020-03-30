@@ -6,9 +6,10 @@
 
 .venues-title-container {
   position: relative;
-  width: 240px;
+  // width: 240px;
   font-size: 14px;
   margin-bottom: 20px;
+  display: flex;
 
 }
 .postcode-text {
@@ -17,9 +18,11 @@
 }
 
 .change-postcode {
-  position: absolute;
-  right: 0;
-  bottom: 0;
+  margin-left: 4px;
+  margin-top: 15px;
+  // position: absolute;
+  // right: 0;
+  // bottom: 0;
 }
 
 .change-bracket {
