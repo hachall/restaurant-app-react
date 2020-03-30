@@ -11,7 +11,7 @@ class Checkout extends Component {
       <div>
 
         <PayButton
-          stripePublicKey={"pk_test_k3ADhhaZ23wxFDIt71RopSdH00SUqUefPB"}
+          stripePublicKey={"pk_test_ETk8rfAJNbrGGITQTWn9J90P00lMf7VhSa"}
           apiName="stripeapi"
           apiEndpoint="/checkout"
           name='T-shirt'

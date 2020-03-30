@@ -28,12 +28,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"stripeCheckout",
+						"stripeWebhook",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"stripeCheckout",
+									"stripeWebhook",
 									"-",
 									{
 										"Ref": "env"
@@ -63,7 +63,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-restaurant-app-react-dev-105949-deployment",
-					"S3Key": "amplify-builds/stripeCheckout-4c64624e6a3058376d35-build.zip"
+					"S3Key": "amplify-builds/stripeWebhook-61393154435970643074-build.zip"
 				}
 			}
 		},
@@ -73,12 +73,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"restaurantappreactLambdaRole0d6d5120",
+						"restaurantappreactLambdaRole475f27d2",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"restaurantappreactLambdaRole0d6d5120",
+									"restaurantappreactLambdaRole475f27d2",
 									"-",
 									{
 										"Ref": "env"
@@ -144,6 +144,22 @@
 									}
 								]
 							}
+						},
+						{
+							"Effect": "Allow",
+							"Action": [
+								"dynamodb:PutItem",
+								"dynamodb:DeleteItem",
+								"dynamodb:GetItem",
+								"dynamodb:Query",
+								"dynamodb:UpdateItem"
+							],
+							"Resource": "arn:aws:dynamodb:*:*:table/*"
+						},
+						{
+							"Effect": "Allow",
+							"Action": "dynamodb:Query",
+							"Resource": "arn:aws:dynamodb:*:*:table/*/index/*"
 						}
 					]
 				}

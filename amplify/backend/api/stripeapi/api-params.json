@@ -6,6 +6,13 @@
             "privacy": {
                 "open": true
             }
+        },
+        {
+            "name": "/webhook",
+            "lambdaFunction": "stripeWebhook",
+            "privacy": {
+                "open": true
+            }
         }
     ],
     "resourceName": "stripeapi",
@@ -13,6 +20,9 @@
     "functionArns": [
         {
             "lambdaFunction": "stripeCheckout"
+        },
+        {
+            "lambdaFunction": "stripeWebhook"
         }
     ],
     "privacy": {
@@ -29,6 +39,15 @@
                 "Name",
                 "Arn"
             ]
+        },
+        {
+            "category": "function",
+            "resourceName": "stripeWebhook",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
         }
-    ]
+    ],
+    "uuid": "4d0321cc"
 }
