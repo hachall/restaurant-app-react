@@ -7,6 +7,7 @@ import routes from './routes'
 import Home from './components/home/home'
 import VenuePage from './components/venue_page/venue_page';
 import Checkout from './components/basket/checkout';
+import LandingPage from './components/landing/landing';
 import NavBar from './components/navbar';
 
 class Router extends Component {
@@ -20,7 +21,8 @@ class Router extends Component {
       <BrowserRouter>
           <NavBar/>
           <Switch>
-            <Route  path="/" exact component={Home}  />
+            <Route  path="/" exact component={LandingPage}  />
+            <Route  path="/home" component={Home}  />
             <Route  path="/venues/:venueid/:typeid" component={VenuePage}  />
             <Route  path="/checkout" component={Checkout}  />
           </Switch>

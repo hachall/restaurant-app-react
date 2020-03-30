@@ -90,6 +90,13 @@ export function emptyBasket() {
   }
 }
 
+export const POST_POSTCODE = "POST_POSTCODE";
+export function postPostcode(postcode) {
+  return {
+    type: POST_POSTCODE,
+    payload: postcode
+  }
+}
 
 
 

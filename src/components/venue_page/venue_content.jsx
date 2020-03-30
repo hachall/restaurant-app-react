@@ -14,7 +14,7 @@ class VenueContent extends Component {
   render() {
     return (
       <div className="venue-page">
-        <Link className="back-button" to="/">
+        <Link className="back-button" to="/home">
           <TiArrowLeftOutline/>
           <div>Back</div>
          </Link>
