@@ -52,7 +52,7 @@ class NavBar extends Component {
             :
 
             <div className="navbar-section">
-              <Link to="/checkout">
+              <Link to="/basket">
                 <div className="navbar-basket">
                   <GiShoppingCart className="nav-basket-icon navbar-icon"/>
                   <div className="basket-cost">{`£${this.props.basket.total}`}</div>

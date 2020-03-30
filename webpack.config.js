@@ -35,6 +35,6 @@ module.exports = {
     contentBase: './src'
   },
   resolve: {
-    extensions: [ '.js', '.jsx' ]
+    extensions: [ '.mjs','.js', '.jsx' ]
   }
 };

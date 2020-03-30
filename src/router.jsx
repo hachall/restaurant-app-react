@@ -24,7 +24,7 @@ class Router extends Component {
             <Route  path="/" exact component={LandingPage}  />
             <Route  path="/home" component={Home}  />
             <Route  path="/venues/:venueid/:typeid" component={VenuePage}  />
-            <Route  path="/checkout" component={Checkout}  />
+            <Route  path="/basket" component={Checkout}  />
           </Switch>
       </BrowserRouter>
     )

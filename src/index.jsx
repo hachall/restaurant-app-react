@@ -14,6 +14,13 @@ import mapReducer from './reducers/map_reducer'
 import basketReducer from './reducers/basket_reducer'
 import postcodeReducer from './reducers/postcode_reducer'
 
+
+import API from '@aws-amplify/api'
+import PubSub from '@aws-amplify/pubsub';
+import awsconfig from './aws-exports';
+API.configure(awsconfig);
+PubSub.configure(awsconfig);
+
 const reducers = combineReducers({
   venues: venuesReducer,
   menu: menuReducer,

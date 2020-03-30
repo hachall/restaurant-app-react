@@ -23,7 +23,7 @@ class Basket extends Component {
           <div className="basket-left">Basket:</div>
           <div className="basket-right">{`£${this.props.basket.total}`}</div>
         </div>
-        <Link to="/checkout">
+        <Link to="/basket">
           <div className="co-button">Go To Checkout</div>
         </Link>
       </div>
