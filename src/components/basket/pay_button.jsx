@@ -32,6 +32,8 @@ class PayButton extends Component {
                   cancel_url={cancel_url}
                   onClick={this.onClickPay}
                   onFail={this.onPayFail}
+                  classname={this.props.classname}
+                  comp={this.props.comp}
               />
           </Elements>
       </StripeProvider>

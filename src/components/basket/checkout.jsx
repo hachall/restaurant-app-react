@@ -33,8 +33,11 @@ class Checkout extends Component {
           items={this.getItems('gbp')}
           venue={this.props.basket.venue}
           amount={this.props.basket.total}
-          success_url='http://localhost:8081/basket'
-          cancel_url='http://localhost:8081/basket'
+          success_url='http://localhost:8081/'
+          cancel_url={this.props.link}
+          classname={this.props.classname}
+          comp={this.props.comp}
+
 
         />
 

@@ -2,8 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
+
+import Checkout from './checkout'
 
 class Basket extends Component {
+
+  getLocation = () => {
+    const {pathname} = this.props.location;
+    return pathname
+  }
 
 
   render() {
@@ -15,7 +23,7 @@ class Basket extends Component {
       classes += " basket-close"
     }
 
-    console.log(this.props.basket)
+    let base = "http://localhost:8081"
 
     return (
       <div className={classes}>
@@ -23,9 +31,7 @@ class Basket extends Component {
           <div className="basket-left">Basket:</div>
           <div className="basket-right">{`£${this.props.basket.total}`}</div>
         </div>
-        <Link to="/basket">
-          <div className="co-button">Go To Checkout</div>
-        </Link>
+        <Checkout link={`${base}${this.getLocation()}`} classname={"co-button"} comp={<p className="">Go To Checkout</p>}/>
       </div>
     )
   }
@@ -36,5 +42,5 @@ function mapStateToProps(state) {
   return { basket: state.basket };
 }
 
-export default connect(mapStateToProps, null)(Basket);
+export default withRouter(connect(mapStateToProps, null)(Basket));
 

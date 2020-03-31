@@ -34,7 +34,10 @@ class PayButtonContent extends Component {
 
   render() {
     return (
-      <button onClick={this.handlePay} disabled={this.state.loading} variant="contained" color="secondary">Pay ({parseFloat(Math.round(this.props.amount) / 100).toFixed(2)} {this.props.currency})</button>
+      <div onClick={this.handlePay} disabled={this.state.loading} className={this.props.classname}>
+        {this.props.comp}
+
+      </div>
     )
   }
 }
