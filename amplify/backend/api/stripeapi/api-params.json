@@ -13,6 +13,13 @@
             "privacy": {
                 "open": true
             }
+        },
+        {
+            "name": "/session",
+            "lambdaFunction": "stripeSession",
+            "privacy": {
+                "open": true
+            }
         }
     ],
     "resourceName": "stripeapi",
@@ -23,6 +30,9 @@
         },
         {
             "lambdaFunction": "stripeWebhook"
+        },
+        {
+            "lambdaFunction": "stripeSession"
         }
     ],
     "privacy": {
@@ -47,7 +57,15 @@
                 "Name",
                 "Arn"
             ]
+        },
+        {
+            "category": "function",
+            "resourceName": "stripeSession",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
         }
     ],
-    "uuid": "4d0321cc"
+    "uuid": "dfdf1dcb"
 }
