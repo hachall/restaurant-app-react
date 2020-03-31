@@ -9,8 +9,8 @@ See the License for the specific language governing permissions and limitations 
 const AWS = require('aws-sdk');
 
 // Stripe parameters
-const stripe = require('stripe')('sk_test_MPd2vPMcOQb0TIqTG0qDiYs900fbJyaxW0');
-const endpointSecret = 'whsec_SyHOrcLOpW7P0i3Ysfh2UoxXKDai90d5';
+const stripe = require('stripe')('sk_*****');
+const endpointSecret = 'whsec_*****';
 
 const express = require('express');
 const bodyParser = require('body-parser');

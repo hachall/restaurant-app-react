@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License"). You may not use 
 or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and limitations under the License.
 */
-const stripe = require('stripe')("sk_test_MPd2vPMcOQb0TIqTG0qDiYs900fbJyaxW0");
+const stripe = require('stripe')("sk_*****");
 
 var express = require('express')
 var bodyParser = require('body-parser')
@@ -28,13 +28,7 @@ app.post('/checkout', async function (req, res) {
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: [{
-        name: req.body.name,
-        description: req.body.description,
-        amount: req.body.amount,
-        currency: req.body.currency,
-        quantity: req.body.quantity,
-      }],
+      line_items: req.body.items,
       success_url: req.body.success_url,
       cancel_url: req.body.cancel_url,
       metadata: req.body.metadata
@@ -55,3 +49,4 @@ app.listen(3000, function() {
 // to port it to AWS Lambda we will create a wrapper around that will load the app from
 // this file
 module.exports = app;
+

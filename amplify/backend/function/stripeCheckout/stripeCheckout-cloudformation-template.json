@@ -63,7 +63,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-restaurant-app-react-dev-105949-deployment",
-					"S3Key": "amplify-builds/stripeCheckout-4c64624e6a3058376d35-build.zip"
+					"S3Key": "amplify-builds/stripeCheckout-434c6e4678697a4e6364-build.zip"
 				}
 			}
 		},
