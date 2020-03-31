@@ -7,6 +7,8 @@ export function add_item(basket, item) {
 
   if (newBasket.venue == -1) {
     newBasket.venue = item.venue
+    newBasket.venueid = item.venueid
+    newBasket.venue_stripe_acct = item.stripe_acct
   }
 
   newBasket.total += item.price

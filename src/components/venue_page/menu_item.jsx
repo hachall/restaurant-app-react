@@ -24,9 +24,9 @@ class MenuItem extends Component {
   }
 
   incrementValue = () => {
-    if (this.props.basket.venue == -1 || this.props.basket.venue == this.props.venue) {
+    if (this.props.basket.venue == -1 || this.props.basket.venue == this.props.venue.name) {
       this.setState({value: this.state.value + 1})
-      this.props.addToBasket({name: this.props.name, price: this.props.price, venue: this.props.venue})
+      this.props.addToBasket({name: this.props.name, price: this.props.price, venue: this.props.venue.name, venueid: this.props.venue.venueid, stripe_acct: this.props.venue.stripeid})
     } else {
       this.setState({modal: true})
     }
@@ -41,7 +41,7 @@ class MenuItem extends Component {
   }
 
   componentDidMount() {
-    if (this.props.basket.items[this.props.name] && this.props.venue == this.props.basket.venue) {
+    if (this.props.basket.items[this.props.name] && this.props.venue.name == this.props.basket.venue) {
       this.setState({value: this.props.basket.items[this.props.name].num})
     }
   }
@@ -53,7 +53,7 @@ class MenuItem extends Component {
   clearBasket = () => {
     this.props.emptyBasket()
     this.setState({value: this.state.value + 1})
-    this.props.addToBasket({name: this.props.name, price: this.props.price, venue: this.props.venue})
+    this.props.addToBasket({name: this.props.name, price: this.props.price, venue: this.props.venue.name})
     this.setState({modal: false})
   }
 
