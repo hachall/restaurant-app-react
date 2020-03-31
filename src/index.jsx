@@ -54,8 +54,8 @@ const root = document.getElementById('root');
 if (root) {
   ReactDOM.render(
     <Provider store={createStore(reducers, initialState, middlewares)}>
-      <ComingSoon/>
-      {/*<Router />*/}
+      {/*<ComingSoon/>*/}
+      <Router />
     </Provider>
     ,root);
 }
