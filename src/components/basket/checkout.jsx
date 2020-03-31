@@ -24,7 +24,7 @@ class Checkout extends Component {
 
 
   render() {
-    let base = "https://test.dolxjcfav4ei2.amplifyapp.com/"
+    let base = "https://test.dolxjcfav4ei2.amplifyapp.com"
 
     return (
       <div>
