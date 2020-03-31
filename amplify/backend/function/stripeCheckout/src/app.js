@@ -31,13 +31,13 @@ app.post('/checkout', async function (req, res) {
       line_items: [{
         name: req.body.name,
         description: req.body.description,
-        images: req.body.images,
         amount: req.body.amount,
         currency: req.body.currency,
         quantity: req.body.quantity,
       }],
       success_url: req.body.success_url,
       cancel_url: req.body.cancel_url,
+      metadata: req.body.metadata
     });
     res.json({ err: null, success: 'Create stripe checkout session succeed!', session })
   } catch (err) {

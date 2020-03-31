@@ -12,12 +12,9 @@ class PayButton extends Component {
         stripePublicKey,
         apiName,
         apiEndpoint,
-        name,
-        description,
-        images,
+        items,
+        venue,
         amount,
-        currency,
-        quantity,
         success_url,
         cancel_url,
     } = this.props;
@@ -28,12 +25,9 @@ class PayButton extends Component {
               <PayButtonContent
                   apiName={apiName}
                   apiEndpoint={apiEndpoint}
-                  name={name}
-                  description={description}
-                  images={images}
+                  items={items}
+                  venue={venue}
                   amount={amount}
-                  currency={currency}
-                  quantity={quantity}
                   success_url={success_url}
                   cancel_url={cancel_url}
                   onClick={this.onClickPay}

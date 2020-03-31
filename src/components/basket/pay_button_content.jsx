@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { API } from 'aws-amplify';
 import { injectStripe } from 'react-stripe-elements';
 import "regenerator-runtime/runtime.js";
-
 import PropTypes from 'prop-types';
 
 
@@ -16,19 +15,15 @@ class PayButtonContent extends Component {
 
   handlePay = async() => {
     const body = {
-        name: this.props.name,
-        description: this.props.description,
-        images: this.props.images,
-        amount: this.props.amount,
-        currency: this.props.currency,
-        quantity: this.props.quantity,
+        items: this.props.items,
         success_url: this.props.success_url,
         cancel_url: this.props.cancel_url,
+        metadata: {venue: this.props.venue}
     };
     // Make the request
     const response = await API.post(this.props.apiName, this.props.apiEndpoint, { body });
     // Redirect the user to the checkout session
-    console.log(response)
+    console.log(response.session)
     this.props.stripe.redirectToCheckout({
         sessionId: response.session.id
     }).then(function (result) {

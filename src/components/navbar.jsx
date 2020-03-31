@@ -38,7 +38,7 @@ class NavBar extends Component {
     return (
       <div className="navbar">
         <div className="navbar-section navbar-left">
-          <Link to='/'>
+          <Link to='/home'>
             <GiHamburger className="navbar-logo navbar-icon"/>
           </Link>
           <NavBarSearch/>
