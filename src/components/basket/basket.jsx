@@ -23,7 +23,6 @@ class Basket extends Component {
       classes += " basket-close"
     }
 
-    let base = "http://localhost:8081"
 
     return (
       <div className={classes}>
@@ -31,7 +30,7 @@ class Basket extends Component {
           <div className="basket-left">Basket:</div>
           <div className="basket-right">{`£${this.props.basket.total}`}</div>
         </div>
-        <Checkout disabled={false} link={`${base}${this.getLocation()}`} classname={"co-button"} comp={<p className="">Go To Checkout</p>}/>
+        <Checkout disabled={false} link={this.getLocation()} classname={"co-button"} comp={<p className="">Go To Checkout</p>}/>
       </div>
     )
   }

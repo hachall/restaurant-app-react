@@ -56,7 +56,6 @@ class NavBar extends Component {
   render() {
     const { width } = this.state;
     const isMobile = width <= 600;
-    let base = "http://localhost:8081"
 
     return (
       <div className="navbar">
@@ -82,7 +81,7 @@ class NavBar extends Component {
                 </div>
 
               </Link>*/}
-              <Checkout disabled={this.props.basket.total == 0} link={`${base}${this.getLocation()}`} classname="" comp={this.basketComp()}/>
+              <Checkout disabled={this.props.basket.total == 0} link={this.getLocation()} classname="" comp={this.basketComp()}/>
               <div className="navbar-sign-in">
                 Sign Up
               </div>
