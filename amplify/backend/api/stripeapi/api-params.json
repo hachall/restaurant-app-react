@@ -1,0 +1,71 @@
+{
+    "paths": [
+        {
+            "name": "/checkout",
+            "lambdaFunction": "stripeCheckout",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/webhook",
+            "lambdaFunction": "stripeWebhook",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/session",
+            "lambdaFunction": "stripeSession",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "stripeapi",
+    "apiName": "stripeapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "stripeCheckout"
+        },
+        {
+            "lambdaFunction": "stripeWebhook"
+        },
+        {
+            "lambdaFunction": "stripeSession"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-restaurant-app-react-dev-105949-authRole",
+        "unAuthRoleName": "amplify-restaurant-app-react-dev-105949-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "stripeCheckout",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "stripeWebhook",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "stripeSession",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "dfdf1dcb"
+}
