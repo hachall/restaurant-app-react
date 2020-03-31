@@ -6,7 +6,7 @@ import { createHistory as history } from 'history';
 import routes from './routes'
 import Home from './components/home/home'
 import VenuePage from './components/venue_page/venue_page';
-import Checkout from './components/basket/checkout';
+import Success from './components/basket/success';
 import LandingPage from './components/landing/landing';
 import NavBar from './components/navbar';
 
@@ -24,7 +24,7 @@ class Router extends Component {
             <Route  path="/" exact component={LandingPage}  />
             <Route  path="/home" component={Home}  />
             <Route  path="/venues/:venueid/:typeid" component={VenuePage}  />
-            <Route  path="/basket" component={Checkout}  />
+            <Route  path="/success" component={Success}  />
           </Switch>
       </BrowserRouter>
     )

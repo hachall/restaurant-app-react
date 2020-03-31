@@ -30,9 +30,11 @@ const reducers = combineReducers({
 });
 
 let basket_template = {
-  venue: -1,
   total: 0.00,
-  items: {}
+  items: {},
+  venue: -1,
+  venueid: -1,
+  venue_stripe_acct: ""
 }
 
 const initialState = {

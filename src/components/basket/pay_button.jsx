@@ -14,26 +14,34 @@ class PayButton extends Component {
         apiEndpoint,
         items,
         venue,
+        venueid,
+        connectedAccount,
         amount,
         success_url,
         cancel_url,
+        classname,
+        comp,
+        disabled
     } = this.props;
 
     return (
-      <StripeProvider apiKey={stripePublicKey}>
+      <StripeProvider apiKey={stripePublicKey} stripeAccount={connectedAccount}>
           <Elements>
               <PayButtonContent
                   apiName={apiName}
                   apiEndpoint={apiEndpoint}
                   items={items}
                   venue={venue}
+                  venueid={venueid}
+                  connectedAccount={connectedAccount}
                   amount={amount}
                   success_url={success_url}
                   cancel_url={cancel_url}
                   onClick={this.onClickPay}
                   onFail={this.onPayFail}
-                  classname={this.props.classname}
-                  comp={this.props.comp}
+                  classname={classname}
+                  comp={comp}
+                  disabled={disabled}
               />
           </Elements>
       </StripeProvider>

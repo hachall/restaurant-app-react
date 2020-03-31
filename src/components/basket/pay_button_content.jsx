@@ -14,21 +14,28 @@ class PayButtonContent extends Component {
   }
 
   handlePay = async() => {
-    const body = {
-        items: this.props.items,
-        success_url: this.props.success_url,
-        cancel_url: this.props.cancel_url,
-        metadata: {venue: this.props.venue}
-    };
-    // Make the request
-    const response = await API.post(this.props.apiName, this.props.apiEndpoint, { body });
-    // Redirect the user to the checkout session
-    console.log(response.session)
-    this.props.stripe.redirectToCheckout({
+    if (!this.props.disabled) {
+      const body = {
+          items: this.props.items,
+          success_url: this.props.success_url,
+          cancel_url: this.props.cancel_url,
+          metadata: {venue: this.props.venue, venueid: this.props.venueid},
+          connectedAccount: this.props.connectedAccount
+      };
+      // Make the request
+      const response = await API.post(this.props.apiName, this.props.apiEndpoint, { body });
+      // Redirect the user to the checkout session
+      console.log(response.session)
+      this.props.stripe.redirectToCheckout({
         sessionId: response.session.id
-    }).then(function (result) {
+      }).then(function (result) {
         console.log(result.error.message)
-    });
+      });
+    } else {
+      console.log("basket is empty")
+    }
+
+
   };
 
 
@@ -36,7 +43,6 @@ class PayButtonContent extends Component {
     return (
       <div onClick={this.handlePay} disabled={this.state.loading} className={this.props.classname}>
         {this.props.comp}
-
       </div>
     )
   }
