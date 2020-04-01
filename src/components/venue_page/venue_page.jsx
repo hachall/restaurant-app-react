@@ -25,6 +25,11 @@ class VenuePage extends Component {
       this.props.fetchVenue(this.props.match.params.venueid, this.props.match.params.typeid)
     }
     this.props.fetchMenu(this.props.match.params.venueid, this.props.match.params.typeid);
+    setTimeout(() => {
+      if (Object.keys(this.props.menu).length == 0) {
+        this.props.fetchMenu(this.props.match.params.venueid, this.props.match.params.typeid);
+      }
+    }, 2000)
   }
 
   // make sure to remove the listener

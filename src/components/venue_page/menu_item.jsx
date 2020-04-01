@@ -26,7 +26,7 @@ class MenuItem extends Component {
   incrementValue = () => {
     if (this.props.basket.venue == -1 || this.props.basket.venue == this.props.venue.name) {
       this.setState({value: this.state.value + 1})
-      this.props.addToBasket({name: this.props.name, price: this.props.price, venue: this.props.venue.name, venueid: this.props.venue.venueid, stripe_acct: this.props.venue.stripeid})
+      this.props.addToBasket({name: this.props.name, price: this.props.price, venue: this.props.venue.name, venueid: this.props.venue.venueid, typeid: this.props.venue.typeid, stripe_acct: this.props.venue.stripeid})
     } else {
       this.setState({modal: true})
     }
