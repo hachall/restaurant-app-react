@@ -15,6 +15,7 @@ class PayButton extends Component {
         items,
         venue,
         venueid,
+        typeid,
         connectedAccount,
         amount,
         success_url,
@@ -33,6 +34,7 @@ class PayButton extends Component {
                   items={items}
                   venue={venue}
                   venueid={venueid}
+                  typeid={typeid}
                   connectedAccount={connectedAccount}
                   amount={amount}
                   success_url={success_url}

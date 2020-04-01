@@ -35,6 +35,7 @@ class Checkout extends Component {
           items={this.getItems('gbp')}
           venue={this.props.basket.venue}
           venueid={this.props.basket.venueid}
+          typeid={this.props.basket.typeid}
           connectedAccount={this.props.basket.venue_stripe_acct}
           amount={this.props.basket.total}
           success_url='http://localhost:8081/success?session_id={CHECKOUT_SESSION_ID}'

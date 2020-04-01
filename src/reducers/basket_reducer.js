@@ -8,6 +8,7 @@ let basket_template = {
   items: {},
   venue: -1,
   venueid: -1,
+  typeid: -1,
   venue_stripe_acct: ""
 }
 
