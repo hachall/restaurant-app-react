@@ -17,6 +17,12 @@ class VenueList extends Component {
   }
 
   render() {
+    if (this.props.center == [0,0]) {
+      return (
+        <div>Invalid Postcode</div>
+      )
+    }
+
     if (this.props.venues.length == 0) {
       return (<div className="loader">
           <div data-v-21dcae14="" className="box" category="animation" text=""><div data-v-21dcae14="" className="bouncingLoader"><div data-v-21dcae14=""></div></div></div>
@@ -55,7 +61,7 @@ class VenueList extends Component {
 
 function mapStateToProps(state) {
   return {
-    venues: state.venues, map: state.map
+    venues: state.venues, map: state.map, center: state.center
   };
 }
 
