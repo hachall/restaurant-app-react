@@ -8,6 +8,7 @@ import MapBox from '../map/map_box'
 
 class HomeDesktop extends Component {
 
+
   render() {
     let map_classes = ""
     if (this.props.map_state) {
@@ -16,11 +17,13 @@ class HomeDesktop extends Component {
       map_classes += "map-closed"
     }
 
+
     return (
+
       <div className="home-desktop">
         <VenuesContainer/>
         <div className={map_classes}>
-          <MapBox venues={this.props.venues} center={[-0.1749, 51.4988]} zoom={[16]}/>
+          <MapBox venues={this.props.venues} center={this.props.center} zoom={(this.props.center == [0,0]) ? [0] : [16]}/>
         </div>
 
       </div>
@@ -31,7 +34,8 @@ class HomeDesktop extends Component {
 function mapStateToProps(state) {
   return {
     map_state: state.map,
-    venues: state.venues
+    venues: state.venues,
+    center: state.center
   };
 }
 

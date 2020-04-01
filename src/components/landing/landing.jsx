@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import {Link} from 'react-router-dom'
 
 import { postPostcode } from '../../actions'
+import { setCenter } from '../../actions'
 
 class LandingPage extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class LandingPage extends Component {
 
   componentWillUnmount() {
     this.props.postPostcode(this.state.value)
+    this.props.setCenter(this.state.value)
   }
 
 
@@ -46,7 +48,7 @@ class LandingPage extends Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    {postPostcode: postPostcode },
+    {postPostcode: postPostcode, setCenter: setCenter },
      dispatch);
 }
 

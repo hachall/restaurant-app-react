@@ -13,6 +13,7 @@ import menuReducer from './reducers/menu_reducer'
 import mapReducer from './reducers/map_reducer'
 import basketReducer from './reducers/basket_reducer'
 import postcodeReducer from './reducers/postcode_reducer'
+import centerReducer from './reducers/center_reducer'
 
 
 import API from '@aws-amplify/api'
@@ -26,7 +27,8 @@ const reducers = combineReducers({
   menu: menuReducer,
   map: mapReducer,
   basket: basketReducer,
-  postcode: postcodeReducer
+  postcode: postcodeReducer,
+  center: centerReducer
 });
 
 let basket_template = {
@@ -43,7 +45,8 @@ const initialState = {
   menu: {},
   map: false,
   basket: basket_template,
-  postcode: "SW7"
+  postcode: "SW7 2BX",
+  center: [-0.17461, 51.499603]
 };
 
 const middlewares = applyMiddleware(reduxPromise, logger);

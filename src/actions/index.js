@@ -98,6 +98,17 @@ export function postPostcode(postcode) {
   }
 }
 
-
+export const SET_CENTER = "SET_CENTER";
+export function setCenter(postcode) {
+    const promise = fetch(`http://api.postcodes.io/postcodes/${postcode.replace(/ /g, '')}`)
+      .then(res => res.json())          // convert to plain text
+      .then((data) => {
+        return data
+  })
+  return {
+    type: SET_CENTER,
+    payload: promise
+  }
+}
 
 
