@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux';
 import { GiPin } from "react-icons/gi";
 import { TiArrowLeftOutline } from "react-icons/ti";
 
+
+
 import PropTypes from 'prop-types';
 
 import Menu from './menu'

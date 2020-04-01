@@ -14,6 +14,7 @@ import mapReducer from './reducers/map_reducer'
 import basketReducer from './reducers/basket_reducer'
 import postcodeReducer from './reducers/postcode_reducer'
 import centerReducer from './reducers/center_reducer'
+import userLocationReducer from './reducers/user_location_reducer'
 
 
 import API from '@aws-amplify/api'
@@ -28,7 +29,8 @@ const reducers = combineReducers({
   map: mapReducer,
   basket: basketReducer,
   postcode: postcodeReducer,
-  center: centerReducer
+  center: centerReducer,
+  user_loc: userLocationReducer
 });
 
 let basket_template = {
@@ -46,17 +48,20 @@ const initialState = {
   map: false,
   basket: basket_template,
   postcode: "SW7 2BX",
-  center: [-0.17461, 51.499603]
+  center: [-0.17461, 51.499603],
+  user_loc: []
 };
 
 const middlewares = applyMiddleware(reduxPromise, logger);
 
 import Router from './router'
+import Location from './location'
 
 const root = document.getElementById('root');
 if (root) {
   ReactDOM.render(
     <Provider store={createStore(reducers, initialState, middlewares)}>
+      <Location />
       <Router />
     </Provider>
     ,root);

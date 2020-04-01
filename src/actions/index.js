@@ -10,7 +10,6 @@ export function setVenues() {
   const promise = fetch(`${proxyurl}${ROOT_URL}/get-venues`, {headers: {'Access-Control-Allow-Origin': '*'}})
     .then(response => response.json())
     .then((data => {
-      console.log(data)
       return JSON.parse(data.body)
     }))
 
@@ -111,4 +110,12 @@ export function setCenter(postcode) {
   }
 }
 
+
+export const SET_USER_LOC = "SET_USER_LOC";
+export function setUserLoc(loc) {
+  return {
+    type: SET_USER_LOC,
+    payload: loc
+  }
+}
 
