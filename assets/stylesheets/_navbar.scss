@@ -1,7 +1,7 @@
-.navbar {
+.navbarr {
   // width: 100vw;
   // height: 70px;
-  padding: 12px 15px;
+  padding: 8px;
   // background-color: red;
   border: none;
   display: flex;
@@ -10,6 +10,8 @@
   border-bottom: 1px solid $lighter-grey;
   box-shadow: 2px 2px 3px $lighter-grey;
 }
+
+
 
 .navbar-logo {
 
@@ -30,7 +32,7 @@
 .nav-searchbar {
   height: 42px;
   font-size: 18px;
-  width: 250px;
+  width: 230px;
   border: 1px solid $lighter-grey;
   border-radius: 3%;
   color: $lighter-grey;
@@ -40,6 +42,12 @@
 @media (min-width: 600px) {
   .nav-searchbar{
     width: 450px;
+  }
+  .navbar {
+    padding: 12px 15px;
+  }
+  .navbar-basket {
+    margin-right: 20px;
   }
 }
 
@@ -61,7 +69,7 @@
 }
 
 .navbar-basket {
-  margin-right: 20px;
+  margin-right: 0px;
   display: flex;
   align-items: center;
   // position: relative;

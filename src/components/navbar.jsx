@@ -59,7 +59,7 @@ class NavBar extends Component {
     let base = "http://localhost:8081"
 
     return (
-      <div className="navbar">
+      <div className="navbarr">
         <div className="navbar-section navbar-left">
           <Link to='/home'>
             <GiHamburger className="navbar-logo navbar-icon"/>
@@ -69,7 +69,8 @@ class NavBar extends Component {
         <div className=" navbar-right">
           {(isMobile) ?
             <div>
-              <GiHamburgerMenu className="navbar-icon"/>
+              <Checkout disabled={this.props.basket.total == 0} link={`${base}${this.getLocation()}`} classname="" comp={this.basketComp()}/>
+
             </div>
 
             :
@@ -83,9 +84,7 @@ class NavBar extends Component {
 
               </Link>*/}
               <Checkout disabled={this.props.basket.total == 0} link={`${base}${this.getLocation()}`} classname="" comp={this.basketComp()}/>
-              <div className="navbar-sign-in">
-                Sign Up
-              </div>
+
             </div>
 
 
