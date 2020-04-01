@@ -15,6 +15,7 @@ class MapBox extends Component {
         'pk.eyJ1IjoiaGFjaGFsbCIsImEiOiJjazhhY2U5ajkwMHh6M2dwZTZnODg2bXhuIn0.ESQOFjdsmHaRB2xsjobMDQ'
     });
 
+
     return (
       <div className={"map-box"}>
 
