@@ -25,11 +25,17 @@ class LandingPage extends Component {
 
 
   render() {
+    let sectionStyle = {
+      width: "100%",
+      height: "100%",
+      backgroundSize: cover,
+      backgroundImage: "url(https://restaurant-app.s3.eu-west-2.amazonaws.com/New+Project.png)"
+    };
 
 
     return (
 
-      <div className="landing-page">
+      <div className="landing-page" style={sectionStyle}>
         <div className="landing-box">
           <div className="landing-title">
             What is your postcode?
