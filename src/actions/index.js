@@ -110,7 +110,6 @@ export function setCenter(postcode) {
   }
 }
 
-
 export const SET_USER_LOC = "SET_USER_LOC";
 export function setUserLoc(loc) {
   return {
@@ -119,3 +118,24 @@ export function setUserLoc(loc) {
   }
 }
 
+export const SORT_BY_PRICE_LOW = "SORT_BY_PRICE_LOW";
+export function sortByPriceLow() {
+  return {
+    type: SORT_BY_PRICE_LOW
+  }
+}
+
+export const SORT_BY_PRICE_HIGH = "SORT_BY_PRICE_HIGH";
+export function sortByPriceHigh() {
+  return {
+    type: SORT_BY_PRICE_HIGH
+  }
+}
+
+export const SORT_BY_DISTANCE = "SORT_BY_DISTANCE";
+export function sortByDistance(user_loc) {
+  return {
+    type: SORT_BY_DISTANCE,
+    payload: user_loc
+  }
+}
