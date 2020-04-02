@@ -20,15 +20,24 @@ class Success extends Component {
   }
 
   getSession = async() => {
-    let token = this.props.location.search.split("=")[1]
-    const body = {token: token}
+    let split1 = this.props.location.search.split("session_id=")[1]
+    let split2 = split1.split("&acct=")
+    let token = split2[0]
+    let acct = split2[1]
+    const body = {token: token, acct: acct}
     // Make the request
     return await API.post('stripeapi', '/session', { body });
   }
 
   componentDidMount() {
-    console.log(this.props.location.search.split("=")[1])
+    let split1 = this.props.location.search.split("session_id=")[1]
+    let split2 = split1.split("&acct=")
+    let token = split2[0]
+    let acct = split2[1]
+    console.log(token)
+    console.log(acct)
     this.getSession().then(response => {
+      console.log(response)
       this.setState({session: response.session})
       this.props.fetchVenue(this.state.session.metadata.venueid, this.state.session.metadata.typeid)
     })
@@ -46,6 +55,7 @@ class Success extends Component {
   }
 
   render() {
+
 
     if (!this.state.session || !this.props.venues[0]) {
         return (<div className="loader">
