@@ -56,4 +56,6 @@ function mapStateToProps(state) {
   return {basket: state.basket}
 }
 
-export default connect(mapStateToProps, null)(Checkout);
+export default connect(mapStateToProps, null, null, {
+    pure: false,
+  })(Checkout);

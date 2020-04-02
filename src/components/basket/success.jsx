@@ -21,14 +21,13 @@ class Success extends Component {
 
   getSession = async() => {
     let token = this.props.location.search.split("=")[1]
-    let toke = "cs_test_l0xOkfjiGbkNlsoY4zEeu0V97Nq9nx5MhzUlY1fWa3mZz2tlm8zYI4dj"
-
     const body = {token: token}
     // Make the request
     return await API.post('stripeapi', '/session', { body });
   }
 
   componentDidMount() {
+    console.log(this.props.location.search.split("=")[1])
     this.getSession().then(response => {
       this.setState({session: response.session})
       this.props.fetchVenue(this.state.session.metadata.venueid, this.state.session.metadata.typeid)
@@ -48,7 +47,6 @@ class Success extends Component {
 
   render() {
 
-    console.log(this.props.venues[0])
     if (!this.state.session || !this.props.venues[0]) {
         return (<div className="loader">
           <div data-v-21dcae14="" className="box" category="animation" text=""><div data-v-21dcae14="" className="bouncingLoader"><div data-v-21dcae14=""></div></div></div>
