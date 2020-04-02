@@ -23,6 +23,7 @@ class PayButtonContent extends Component {
           connectedAccount: this.props.connectedAccount
       };
       // Make the request
+
       const response = await API.post(this.props.apiName, this.props.apiEndpoint, { body });
       // Redirect the user to the checkout session
       console.log(response.session)

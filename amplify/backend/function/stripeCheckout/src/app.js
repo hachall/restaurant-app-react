@@ -28,12 +28,18 @@ app.post('/checkout', async function (req, res) {
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: req.body.items,
       success_url: req.body.success_url,
       cancel_url: req.body.cancel_url,
       metadata: req.body.metadata,
+      line_items: req.body.items,
+      payment_intent_data: {
+        application_fee_amount: 200,
+      },
 
-    });
+      }, {
+        stripeAccount: req.body.connectedAccount,
+      });
+
     res.json({ err: null, success: 'Create stripe checkout session succeed!', session })
   } catch (err) {
     res.json({ err: err })

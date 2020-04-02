@@ -38,7 +38,7 @@ class Checkout extends Component {
           typeid={this.props.basket.typeid}
           connectedAccount={this.props.basket.venue_stripe_acct}
           amount={this.props.basket.total}
-          success_url='http://localhost:8081/success?session_id={CHECKOUT_SESSION_ID}'
+          success_url={`http://localhost:8081/success?session_id={CHECKOUT_SESSION_ID}&acct=${this.props.basket.venue_stripe_acct}`}
           cancel_url={this.props.link}
           classname={this.props.classname}
           comp={this.props.comp}
@@ -56,4 +56,6 @@ function mapStateToProps(state) {
   return {basket: state.basket}
 }
 
-export default connect(mapStateToProps, null)(Checkout);
+export default connect(mapStateToProps, null, null, {
+    pure: false,
+  })(Checkout);
