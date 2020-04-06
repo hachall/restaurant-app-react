@@ -30,7 +30,6 @@ class VenueContent extends Component {
   renderWalkingDistance = () => {
      if (this.props.user_loc.length > 0) {
       let d = this.distance(this.props.user_loc[1], this.props.user_loc[0], this.props.venue.latitude, this.props.venue.longitude)
-      console.log(d)
       return `Distance: ${Math.round(((d / 4) * 60))}min` //walking speed of 5km/hour
     } else {
       return ""

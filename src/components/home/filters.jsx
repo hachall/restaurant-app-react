@@ -20,7 +20,7 @@ class Filters extends Component {
       restaurants: true,
       cafes: true,
       bars: true,
-      pickup: true
+      pickup: false
     };
 
   }
@@ -93,9 +93,9 @@ class Filters extends Component {
         </div>
         <div className={toggles_classes}>
 
-          <div onClick={this.toggleMode} className={(this.state.pickup) ? "eatmode-toggle eatmode-selected" : "eatmode-toggle eatmode-deselected"}><GiWalk className="toggle-icon"/> Pick Up</div>
-          <div onClick={this.toggleMode} className={(!this.state.pickup) ? "eatmode-toggle eatmode-selected" : "eatmode-toggle eatmode-deselected"}><GiTabletopPlayers className="toggle-icon"/> Eat In</div>
-          <div className="eatmode-toggle" id="map-toggle" onClick={this.props.toggleMap}>{(this.props.map_state) ? "List" : "Map"}</div>
+          <div  className={"eatmode-toggle eatmode-deselected"}><GiWalk className="toggle-icon"/> <div>Pick Up</div></div>
+          {/*<div onClick={this.toggleMode} className={(!this.state.pickup) ? "eatmode-toggle eatmode-selected" : "eatmode-toggle eatmode-deselected"}><GiTabletopPlayers className="toggle-icon"/> Eat In</div>*/}
+          <div className="mapbtn-toggle" id="map-toggle" onClick={this.props.toggleMap}>{(this.props.map_state) ? "List" : "Map"}</div>
 
         </div>
       </div>

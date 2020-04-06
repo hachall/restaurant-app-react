@@ -35,8 +35,11 @@
   width: 230px;
   border: 1px solid $lighter-grey;
   border-radius: 3%;
-  color: $lighter-grey;
+  color: $dark;
   padding-left: 6px;
+  &:focus {
+    outline: none;
+  }
 }
 
 @media (min-width: 600px) {
@@ -48,6 +51,9 @@
   }
   .navbar-basket {
     margin-right: 20px;
+  }
+  .suggestions {
+    width: 450px !important;
   }
 }
 
@@ -105,3 +111,68 @@
 
 
 }
+
+.nav-magnifying {
+  margin-top: -3px;
+  font-size: 23px;
+  margin-left: -60px;
+  color: $pink;
+
+  &:active {
+    outline: none;
+  }
+
+}
+
+
+.nav-btn {
+  color: white;
+  background-color: white;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+.suggestions {
+  z-index: 1000;
+  background-color: white;
+  width: 230px;
+  position: absolute;
+  top: 42px;
+  border: 1px solid $lighter-grey;
+
+}
+
+.navsearch-box {
+  position: relative;
+}
+
+.suggestion {
+  display: flex;
+  // justify-content: space-between;
+  padding: 10px 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: $lighter-grey;
+  }
+}
+
+.sugg-content {
+  // margin-left: auto;
+  display: flex;
+  font-size: 20px;
+}
+
+.sugg-item {
+  color: $dark;
+}
+
+.sugg-count {
+  color: $grey;
+  margin-left: 15px;
+}
+
+
+
+

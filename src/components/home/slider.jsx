@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
+import { withStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
+const useStyles = () => ({
   root: {
     width: 150,
     color: '#162AF4',
@@ -14,14 +15,6 @@ const useStyles = makeStyles({
     backgroundColor: '#162AF4'
   }
 });
-
-function valuetext(value) {
-  let str = ""
-  for (let i = 0 ; i < value ; i++) {
-    str += "£"
-  }
-  return `${str}`;
-}
 
 const marks = [
   {
@@ -42,31 +35,59 @@ const marks = [
   }
 ];
 
-export default function RangeSlider() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState([0, 3]);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+class RangeSlider extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      value: [0, 3]
+    };
+
+  }
+
+  handleChange = (event, newValue) => {
+    if (newValue != this.state.value) {
+      console.log("changing value")
+      this.setState({value: newValue})
+    }
   };
 
-  return (
-    <div className={classes.root}>
-      <Slider
-        value={value}
-        onChange={handleChange}
-        valueLabelDisplay="auto"
-        aria-labelledby="range-slider"
-        getAriaLabel={valuetext}
-        valueLabelFormat={valuetext}
-        getAriaValueText={valuetext}
-        valueLabelDisplay="auto"
-        defaultValue={[0, 3]}
-        step={1}
-        marks
-        min={0}
-        max={3}
-      />
-    </div>
-  );
+
+  valuetext = (value) => {
+    let str = ""
+    for (let i = 0 ; i < value ; i++) {
+      str += "£"
+    }
+    return `${str}`;
+  }
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <Slider
+          value={this.state.value}
+          onChange={this.handleChange}
+          valueLabelDisplay="auto"
+          aria-labelledby="range-slider"
+          getAriaLabel={this.valuetext}
+          valueLabelFormat={this.valuetext}
+          getAriaValueText={this.valuetext}
+          valueLabelDisplay="auto"
+          defaultValue={[0, 3]}
+          step={1}
+          marks
+          min={0}
+          max={3}
+        />
+      </div>
+    );
+
+  }
+
+
 }
+
+
+
+export default withStyles(useStyles)(RangeSlider);

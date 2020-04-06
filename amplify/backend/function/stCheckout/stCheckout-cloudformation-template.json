@@ -28,12 +28,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"stripeCheckout",
+						"stCheckout",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"stripeCheckout",
+									"stCheckout",
 									"-",
 									{
 										"Ref": "env"
@@ -63,7 +63,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-restaurant-app-react-dev-105949-deployment",
-					"S3Key": "amplify-builds/stripeCheckout-37697374565352696541-build.zip"
+					"S3Key": "amplify-builds/stCheckout-675777706c38732f6d69-build.zip"
 				}
 			}
 		},
@@ -73,12 +73,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"restaurantappreactLambdaRole0d6d5120",
+						"restaurantappreactLambdaRoleef0de9d0",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"restaurantappreactLambdaRole0d6d5120",
+									"restaurantappreactLambdaRoleef0de9d0",
 									"-",
 									{
 										"Ref": "env"
