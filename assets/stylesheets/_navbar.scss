@@ -31,7 +31,7 @@
 
 .nav-searchbar {
   height: 42px;
-  font-size: 18px;
+  font-size: 15px;
   width: 230px;
   border: 1px solid $lighter-grey;
   border-radius: 3%;
@@ -45,6 +45,7 @@
 @media (min-width: 600px) {
   .nav-searchbar{
     width: 450px;
+    font-size: 18px;
   }
   .navbar {
     padding: 12px 15px;

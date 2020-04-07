@@ -11,7 +11,7 @@ class NavBarSearch extends Component {
     this.state = {
       value: '',
       suggestions: [],
-      focus: false
+      focus: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
