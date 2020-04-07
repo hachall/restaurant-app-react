@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {Link} from 'react-router-dom'
+import { Redirect } from 'react-router';
 
 import { postPostcode } from '../../actions'
 import { setCenter } from '../../actions'
+import { updateSearch } from '../../actions'
 
 class LandingPage extends Component {
   constructor(props) {
@@ -22,17 +24,12 @@ class LandingPage extends Component {
     this.setState({value: event.target.value.toUpperCase()});
   }
 
-
-
-  componentDidUpdate(prevProps, prevState) {
-    this.nameInput.focus();
-    window.addEventListener('resize', this.handleWindowSizeChange);
+  fetchPostcode = () => {
     if (this.props.user_loc.length > 0 && this.state.value == "" && !this.state.changed) {
-      console.log("reverse geocdoing")
-      fetch(`http://api.postcodes.io/postcodes/?lon=${-0.226927}&lat=${51.497276}`)
+      fetch(`http://api.postcodes.io/postcodes/?lon=${this.props.user_loc[0]}&lat=${this.props.user_loc[1]}`)
         .then(res => res.json())          // convert to plain text
         .then((data) => {
-          if (data.status == 200) {
+          if (data.status == 200 && this.state.value == "") {
             let word = data.result[0].postcode
             for (var i = 0; i < word.length; i++) {
               this.setState({value: this.state.value += word.charAt(i)});
@@ -43,15 +40,31 @@ class LandingPage extends Component {
     }
   }
 
-  componentWillUnmount() {
-    this.props.postPostcode(this.state.value)
-    this.props.setCenter(this.state.value)
-    window.removeEventListener('resize', this.handleWindowSizeChange);
+  componentDidMount() {
+    this.nameInput.focus();
+    window.addEventListener('resize', this.handleWindowSizeChange);
+    this.fetchPostcode()
+
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.center != prevProps.center) {
+      this.setState({redirect: true});
+    } else {
+      this.fetchPostcode()
+    }
+
   }
 
   handleWindowSizeChange = () => {
       this.setState({ width: window.innerWidth });
   };
+
+  handleClick = () => {
+    this.props.postPostcode(this.state.value)
+    this.props.setCenter(this.state.value)
+    window.removeEventListener('resize', this.handleWindowSizeChange);
+  }
 
 
   render() {
@@ -65,9 +78,11 @@ class LandingPage extends Component {
       backgroundImage: "url(https://restaurant-app.s3.eu-west-2.amazonaws.com/New+Project.png)"
     };
 
+    if (this.state.redirect) {
+      return <Redirect push to="/home" />;
+    }
 
     return (
-
 
       <div className="landing-page" style={sectionStyle}>
         <div className="landing-box">
@@ -76,9 +91,11 @@ class LandingPage extends Component {
           </div>
           <div className="input-inline">
             <input ref={(input) => { this.nameInput = input; }} className="landing-input" type="text" value={this.state.value} onChange={this.handleChange}/>
-            <Link to="/home">
-              <div className="landing-button">Go</div>
-            </Link>
+            {/*<Link to="/home">*/}
+              <div>
+                <div className="landing-button" onClick={this.handleClick}>Go</div>
+              </div>
+            {/*</Link>*/}
           </div>
           <div className="landing-paragraph">
             Order now, and your food will be ready by the time you arrive!
@@ -90,7 +107,7 @@ class LandingPage extends Component {
 }
 
 function mapStateToProps(state) {
-  return {user_loc: state.user_loc}
+  return {user_loc: state.user_loc, center: state.center}
 }
 
 function mapDispatchToProps(dispatch) {

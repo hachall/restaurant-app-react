@@ -52,7 +52,7 @@ class VenueContent extends Component {
           <p>{this.props.venue.desc}</p>
           <p className="venue-address"><span className="venue-pin">{<GiPin/>}</span>{this.props.venue.address}</p>
           <div className="times">
-            <p>{"Prep time: 25min"}</p>
+            <p>{`Prep time: ${this.props.venue.prep_time}min`}</p>
             <p>{this.renderWalkingDistance()}</p>
           </div>
         </div>

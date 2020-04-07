@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { updateSearch } from '../../actions'
+import { setVenues } from '../../actions'
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
@@ -45,11 +49,22 @@ class RangeSlider extends Component {
 
   }
 
+  componentDidMount() {
+    this.setState({value: [this.props.search_obj.pricemin, this.props.search_obj.pricemax]})
+  }
+
   handleChange = (event, newValue) => {
     if (newValue != this.state.value) {
-      console.log("changing value")
       this.setState({value: newValue})
     }
+  };
+
+  handleChangeCommitted = (event, newValue) => {
+    let newSearch = {...this.props.search_obj}
+    newSearch.pricemin = this.state.value[0]
+    newSearch.pricemax = this.state.value[1]
+    this.props.setVenues(newSearch)
+    this.props.updateSearch(newSearch)
   };
 
 
@@ -68,6 +83,7 @@ class RangeSlider extends Component {
         <Slider
           value={this.state.value}
           onChange={this.handleChange}
+          onChangeCommitted={this.handleChangeCommitted}
           valueLabelDisplay="auto"
           aria-labelledby="range-slider"
           getAriaLabel={this.valuetext}
@@ -88,6 +104,16 @@ class RangeSlider extends Component {
 
 }
 
+function mapStateToProps(state) {
+  return {
+    search_obj: state.search_obj
+  };
+}
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {updateSearch: updateSearch, setVenues: setVenues },
+     dispatch);
+}
 
-export default withStyles(useStyles)(RangeSlider);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(useStyles)(RangeSlider));

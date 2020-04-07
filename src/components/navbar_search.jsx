@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { FaSistrix } from "react-icons/fa";
+import { setVenues } from '../actions'
+import { updateSearch } from '../actions'
 
 class NavBarSearch extends Component {
   constructor(props) {
@@ -15,6 +19,7 @@ class NavBarSearch extends Component {
   }
 
   handleChange(event) {
+    this.setState({focus: true})
     const ROOT_URL = "https://fncflnxl03.execute-api.eu-west-2.amazonaws.com/testing/get-tags"
     const proxyurl = "https://cors-anywhere.herokuapp.com/"
 
@@ -23,22 +28,31 @@ class NavBarSearch extends Component {
         const promise = fetch(`${proxyurl}${ROOT_URL}/?query=${this.state.value}`, {headers: {'Access-Control-Allow-Origin': '*'}})
         .then(response => response.json())
         .then((data => {
-          this.setState({suggestions: JSON.parse(data.body)})
+          if (data.response == 404) {
+            this.setState({suggestions: []})
+          } else {
+            this.setState({suggestions: JSON.parse(data.body)})
+          }
         }))
       })
     } else {
       this.setState({value: "", suggestions: []})
     }
+
   }
 
   handleSubmit(event) {
 
-    alert('A name was submitted: ' + this.state.value);
+    this.props.setVenues(this.props.search_obj)
     event.preventDefault();
+
   }
 
   handleFocus = () => {
     this.setState({focus: true})
+    if (this.state.value == "") {
+      this.setState({suggestions: []})
+    }
   }
 
   handleFocusOut = () => {
@@ -48,26 +62,42 @@ class NavBarSearch extends Component {
    BoldedText = (text, shouldBeBold ) => {
     const textArray = text.split(shouldBeBold);
     return (
-      <span>
+      <span className="sugg-span">
         {textArray.map((item, index) => (
-          <>
+          <div key={index}>
             {item}
             {index !== textArray.length - 1 && (
               <b>{shouldBeBold}</b>
             )}
-          </>
+          </div>
         ))}
       </span>
     );
   }
 
+  componentDidMount() {
+    this.setState({value: this.props.search_obj.query})
+  }
+
+  submitWSuggestion = (e) => {
+    let q = e.target.dataset.suggestion
+    this.setState({value: q, focus: false})
+    let newSearch = {...this.props.search_obj}
+    newSearch.query = q
+    this.props.setVenues(newSearch)
+    this.props.updateSearch(newSearch)
+  }
+
+  blockDefault = () => {
+    event.preventDefault()
+  }
+
   render() {
-    console.log(this.state.suggestions)
     return (
       <div className="navsearch-box">
         <form onFocus={this.handleFocus} onBlur={this.handleFocusOut} onSubmit={this.handleSubmit}>
 
-            <input className="nav-searchbar" type="text" placeholder="What are you looking for?" value={this.state.value} onChange={this.handleChange} />
+            <input className="nav-searchbar" type="text" placeholder="What are you looking for?" value={this.state.value || ''} onChange={this.handleChange} />
             <button type="submit" className="nav-btn"><FaSistrix className="nav-magnifying"/></button>
           {/*<input type="submit" value="Submit" />*/}
         </form>
@@ -75,7 +105,7 @@ class NavBarSearch extends Component {
           <div className="suggestions">
             {this.state.suggestions.map((sugg) => {
               return (
-                <div className="suggestion" key={sugg[0]}>
+                <div onClick={this.submitWSuggestion} onMouseDown={this.blockDefault} data-suggestion={sugg[0]} className="suggestion" key={sugg[0]}>
                   <div className="sugg-content">
                     <div className="sugg-item">{this.BoldedText(sugg[0], this.state.value)}</div>
                     <div className="sugg-count">({sugg[1]})</div>
@@ -91,4 +121,16 @@ class NavBarSearch extends Component {
   }
 }
 
-export default NavBarSearch;
+function mapStateToProps(state) {
+  return {
+    map_state: state.map, search_obj: state.search_obj
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {setVenues: setVenues, updateSearch: updateSearch },
+     dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBarSearch);
