@@ -19,10 +19,11 @@ class PayButtonContent extends Component {
           items: this.props.items,
           success_url: this.props.success_url,
           cancel_url: this.props.cancel_url,
-          metadata: {venue: this.props.venue, venueid: this.props.venueid, typeid: this.props.typeid},
+          metadata: {venue: this.props.venue, venueid: this.props.venueid, typeid: this.props.typeid, acct: this.props.connectedAccount},
           connectedAccount: this.props.connectedAccount
       };
       // Make the request
+
       const response = await API.post(this.props.apiName, this.props.apiEndpoint, { body });
       // Redirect the user to the checkout session
       console.log(response.session)

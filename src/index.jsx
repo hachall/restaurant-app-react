@@ -14,6 +14,8 @@ import mapReducer from './reducers/map_reducer'
 import basketReducer from './reducers/basket_reducer'
 import postcodeReducer from './reducers/postcode_reducer'
 import centerReducer from './reducers/center_reducer'
+import userLocationReducer from './reducers/user_location_reducer'
+import searchReducer from './reducers/search_reducer'
 
 
 import API from '@aws-amplify/api'
@@ -28,7 +30,9 @@ const reducers = combineReducers({
   map: mapReducer,
   basket: basketReducer,
   postcode: postcodeReducer,
-  center: centerReducer
+  center: centerReducer,
+  user_loc: userLocationReducer,
+  search_obj: searchReducer
 });
 
 let basket_template = {
@@ -40,25 +44,39 @@ let basket_template = {
   venue_stripe_acct: ""
 }
 
+let base_search = {
+  "query": "",
+  "pricemin": 0,
+  "pricemax": 3,
+  "latitude": 51.4988,
+  "longitude": -0.1749,
+  "radius": 2,
+  "restaurants": true,
+  "bars": true,
+  "cafes": true
+}
+
 const initialState = {
   venues: [],
   menu: {},
   map: false,
   basket: basket_template,
-  postcode: "SW7 2BX",
-  center: [-0.17461, 51.499603]
+  postcode: "SW7 2AZ",
+  center: [-0.1749, 51.4988],
+  user_loc: [],
+  search_obj: base_search
 };
 
 const middlewares = applyMiddleware(reduxPromise, logger);
 
 import Router from './router'
-import ComingSoon from './components/coming_soon'
+import Location from './location'
 
 const root = document.getElementById('root');
 if (root) {
   ReactDOM.render(
     <Provider store={createStore(reducers, initialState, middlewares)}>
-      {/*<ComingSoon/>*/}
+      <Location />
       <Router />
     </Provider>
     ,root);

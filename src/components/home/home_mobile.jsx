@@ -30,7 +30,7 @@ class HomeMobile extends Component {
           <VenuesContainer/>
         </div>
         <div className={mobile_map_classes}>
-          <MapBox venues={this.props.venues} center={this.props.center} zoom={(this.props.center == [0,0]) ? [0] : [16]}/>
+          <MapBox venues={this.props.venues || []} center={this.props.center} zoom={(this.props.center == [0,0]) ? [0] : [16]}/>
         </div>
       </div>
     )

@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import { BrowserRouter, Route, Redirect, Switch, withRouter } from 'react-router-dom';
 import { createHistory as history } from 'history';
 
-
 import routes from './routes'
 import Home from './components/home/home'
 import VenuePage from './components/venue_page/venue_page';
 import Success from './components/basket/success';
 import LandingPage from './components/landing/landing';
 import NavBar from './components/navbar';
+
+
 
 class Router extends Component {
 
@@ -17,7 +18,6 @@ class Router extends Component {
 
     // const routeComponents = routes.map(({path, component}, key) => <Route exact path={path} component={component} key={key} />);
     return (
-
       <BrowserRouter>
           <NavBar/>
           <Switch>

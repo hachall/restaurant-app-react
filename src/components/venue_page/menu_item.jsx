@@ -53,7 +53,7 @@ class MenuItem extends Component {
   clearBasket = () => {
     this.props.emptyBasket()
     this.setState({value: this.state.value + 1})
-    this.props.addToBasket({name: this.props.name, price: this.props.price, venue: this.props.venue.name})
+    this.props.addToBasket({name: this.props.name, price: this.props.price, venue: this.props.venue.name, venueid: this.props.venue.venueid, typeid: this.props.venue.typeid, stripe_acct: this.props.venue.stripeid})
     this.setState({modal: false})
   }
 

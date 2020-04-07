@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import ReactMapboxGl, { Layer, Feature, Marker, Popup } from 'react-mapbox-gl';
 
 import MapFeatures from './map_features'
+import UserMarker from './user_marker'
 
 class MapBox extends Component {
 
@@ -31,6 +32,7 @@ class MapBox extends Component {
       >
 
         <MapFeatures venues={this.props.venues}/>
+        <UserMarker />
 
       </Map>
 

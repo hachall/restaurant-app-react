@@ -5,19 +5,44 @@ const ROOT_URL = "https://fncflnxl03.execute-api.eu-west-2.amazonaws.com/testing
 const proxyurl = "https://cors-anywhere.herokuapp.com/"
 
 export const FETCH_VENUES = 'FETCH_VENUES';
-export function setVenues() {
-  // TODO: Api call! For now, simulate a DB
-  const promise = fetch(`${proxyurl}${ROOT_URL}/get-venues`, {headers: {'Access-Control-Allow-Origin': '*'}})
+export function setVenues(search_obj) {
+    const ROOT_URL = "https://fncflnxl03.execute-api.eu-west-2.amazonaws.com/testing/"
+    const proxyurl = "https://cors-anywhere.herokuapp.com/"
+    let query = `?query=${search_obj["query"]}&pricemin=${search_obj["pricemin"]}&pricemax=${search_obj["pricemax"]}&latitude=${search_obj["latitude"]}&longitude=${search_obj["longitude"]}&radius=${search_obj["radius"]}&restaurants=${search_obj["restaurants"]}&bars=${search_obj["bars"]}&cafes=${search_obj["cafes"]}`
+    console.log(query)
+    const promise = fetch(`${proxyurl}${ROOT_URL}/fetch-venues${query}`, {headers: {'Access-Control-Allow-Origin': '*'}})
     .then(response => response.json())
     .then((data => {
-      console.log(data)
-      return JSON.parse(data.body)
+      return data
     }))
 
     return {
       type: FETCH_VENUES,
       payload: promise
     }
+}
+
+export const EMPTY_VENUES = "EMPTY_VENUES";
+export function emptyVenues() {
+  return {
+    type: EMPTY_VENUES
+  }
+}
+
+export const TOGGLE_FILTER = "TOGGLE_FILTER";
+export function toggleFilter(filter) {
+  return {
+    type: TOGGLE_FILTER,
+    payload: filter
+  }
+}
+
+export const UPDATE_SEARCH = "UPDATE_SEARCH";
+export function updateSearch(newSearch) {
+  return {
+    type: UPDATE_SEARCH,
+    payload: newSearch
+  }
 }
 
 export const FETCH_VENUE = 'FETCH_VENUE';
@@ -108,6 +133,36 @@ export function setCenter(postcode) {
   return {
     type: SET_CENTER,
     payload: promise
+  }
+}
+
+export const SET_USER_LOC = "SET_USER_LOC";
+export function setUserLoc(loc) {
+  return {
+    type: SET_USER_LOC,
+    payload: loc
+  }
+}
+
+export const SORT_BY_PRICE_LOW = "SORT_BY_PRICE_LOW";
+export function sortByPriceLow() {
+  return {
+    type: SORT_BY_PRICE_LOW
+  }
+}
+
+export const SORT_BY_PRICE_HIGH = "SORT_BY_PRICE_HIGH";
+export function sortByPriceHigh() {
+  return {
+    type: SORT_BY_PRICE_HIGH
+  }
+}
+
+export const SORT_BY_DISTANCE = "SORT_BY_DISTANCE";
+export function sortByDistance(user_loc) {
+  return {
+    type: SORT_BY_DISTANCE,
+    payload: user_loc
   }
 }
 

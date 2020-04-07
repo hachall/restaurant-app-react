@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import {Link} from 'react-router-dom'
+
+import { emptyVenues } from '../../actions';
 
 import VenueList from './venue_list'
 
 class VenuesContainer extends Component {
+
+  handleClick = () => {
+    this.props.emptyVenues()
+  }
 
   render() {
 
@@ -13,7 +20,7 @@ class VenuesContainer extends Component {
         <div className="venues-title-container">
           <h2 className="venues-container-title">Venues in <span className="postcode-text">{this.props.postcode}</span></h2>
           <div className="change-postcode">
-            <span className="change-bracket">(</span><a href="/" className="change-link">change</a><span className="change-bracket">)</span>
+            <span className="change-bracket">(</span><Link to="/" className="change-link" onClick={this.handleClick}>change</Link><span className="change-bracket">)</span>
           </div>
         </div>
         <VenueList/>
@@ -26,4 +33,10 @@ function mapStateToProps(state) {
   return {postcode: state.postcode}
 }
 
-export default connect(mapStateToProps, null)(VenuesContainer);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {emptyVenues: emptyVenues },
+     dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(VenuesContainer);

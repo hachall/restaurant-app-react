@@ -23,7 +23,7 @@ class HomeDesktop extends Component {
       <div className="home-desktop">
         <VenuesContainer/>
         <div className={map_classes}>
-          <MapBox venues={this.props.venues} center={this.props.center} zoom={(this.props.center == [0,0]) ? [0] : [16]}/>
+          <MapBox venues={this.props.venues || []} center={this.props.center} zoom={(this.props.center == [0,0]) ? [0] : [16]}/>
         </div>
 
       </div>

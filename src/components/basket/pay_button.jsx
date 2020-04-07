@@ -6,44 +6,45 @@ import PayButtonContent from './pay_button_content'
 import PropTypes from 'prop-types';
 
 class PayButton extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {stripe: null};
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.connectedAccount && this.props.connectedAccount != prevProps.connectedAccount) {
+
+      if (window.Stripe) {
+        this.setState({stripe: window.Stripe(this.props.stripePublicKey, {stripeAccount: this.props.connectedAccount})});
+      } else {
+        document.querySelector('#stripe-js').addEventListener('load', () => {
+          // Create Stripe instance once Stripe.js loads
+          this.setState({stripe: window.Stripe(this.props.stripePublicKey, {stripeAccount: this.props.connectedAccount})});
+        });
+      }
+    }
+  }
 
   render() {
-    const {
-        stripePublicKey,
-        apiName,
-        apiEndpoint,
-        items,
-        venue,
-        venueid,
-        typeid,
-        connectedAccount,
-        amount,
-        success_url,
-        cancel_url,
-        classname,
-        comp,
-        disabled
-    } = this.props;
-
     return (
-      <StripeProvider apiKey={stripePublicKey} stripeAccount={connectedAccount}>
+      <StripeProvider stripe={this.state.stripe}>
           <Elements>
               <PayButtonContent
-                  apiName={apiName}
-                  apiEndpoint={apiEndpoint}
-                  items={items}
-                  venue={venue}
-                  venueid={venueid}
-                  typeid={typeid}
-                  connectedAccount={connectedAccount}
-                  amount={amount}
-                  success_url={success_url}
-                  cancel_url={cancel_url}
+                  apiName={this.props.apiName}
+                  apiEndpoint={this.props.apiEndpoint}
+                  items={this.props.items}
+                  venue={this.props.venue}
+                  venueid={this.props.venueid}
+                  typeid={this.props.typeid}
+                  connectedAccount={this.props.connectedAccount}
+                  amount={this.props.amount}
+                  success_url={this.props.success_url}
+                  cancel_url={this.props.cancel_url}
                   onClick={this.onClickPay}
                   onFail={this.onPayFail}
-                  classname={classname}
-                  comp={comp}
-                  disabled={disabled}
+                  classname={this.props.classname}
+                  comp={this.props.comp}
+                  disabled={this.props.disabled}
               />
           </Elements>
       </StripeProvider>

@@ -31,7 +31,7 @@ class Checkout extends Component {
 
         <PayButton
           stripePublicKey={"pk_test_ETk8rfAJNbrGGITQTWn9J90P00lMf7VhSa"}
-          apiName="stripeapi"
+          apiName="stripe"
           apiEndpoint="/checkout"
           items={this.getItems('gbp')}
           venue={this.props.basket.venue}
@@ -39,7 +39,7 @@ class Checkout extends Component {
           typeid={this.props.basket.typeid}
           connectedAccount={this.props.basket.venue_stripe_acct}
           amount={this.props.basket.total}
-          success_url={`${base}/success?session_id={CHECKOUT_SESSION_ID}`}
+          success_url={`${base}/success?session_id={CHECKOUT_SESSION_ID}&acct=${this.props.basket.venue_stripe_acct}`}
           cancel_url={`${base}${this.props.link}`}
           classname={this.props.classname}
           comp={this.props.comp}
@@ -57,4 +57,6 @@ function mapStateToProps(state) {
   return {basket: state.basket}
 }
 
-export default connect(mapStateToProps, null)(Checkout);
+export default connect(mapStateToProps, null, null, {
+    pure: false,
+  })(Checkout);
