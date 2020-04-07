@@ -26,7 +26,7 @@ class LandingPage extends Component {
 
   fetchPostcode = () => {
     if (this.props.user_loc.length > 0 && this.state.value == "" && !this.state.changed) {
-      fetch(`http://api.postcodes.io/postcodes/?lon=${this.props.user_loc[0]}&lat=${this.props.user_loc[1]}`)
+      fetch(`https://api.postcodes.io/postcodes/?lon=${this.props.user_loc[0]}&lat=${this.props.user_loc[1]}`)
         .then(res => res.json())          // convert to plain text
         .then((data) => {
           if (data.status == 200 && this.state.value == "") {
