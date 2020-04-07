@@ -26,7 +26,7 @@ class Success extends Component {
     let acct = split2[1]
     const body = {token: token, acct: acct}
     // Make the request
-    return await API.post('stripeapi', '/session', { body });
+    return await API.post('stripe', '/session', { body });
   }
 
   componentDidMount() {

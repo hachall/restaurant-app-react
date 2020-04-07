@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { toggleMap } from '../../actions'
+import { toggleFilter } from '../../actions'
+import { updateSearch } from '../../actions'
+import { setVenues } from '../../actions'
 import PropTypes from 'prop-types';
 
 import { GiWalk } from "react-icons/gi";
@@ -17,10 +20,10 @@ class Filters extends Component {
     super(props)
     this.state = {
       width: window.innerWidth,
-      restaurants: true,
-      cafes: true,
-      bars: true,
-      pickup: true
+      // restaurants: true,
+      // cafes: true,
+      // bars: true,
+      // pickup: false
     };
 
   }
@@ -42,15 +45,13 @@ class Filters extends Component {
   }
 
   toggleType = (e) => {
-      console.log(e.target.dataset.type)
       let type = e.target.dataset.type
-      this.setState({
-        restaurants: (type == "restaurants") ? !this.state.restaurants : this.state.restaurants,
-        cafes: (type == "cafes") ? !this.state.cafes : this.state.cafes,
-        bars: (type == "bars") ? !this.state.bars : this.state.bars,
+      let newSearch = {...this.props.search_obj}
+      newSearch[type] = !this.props.search_obj[type]
+      this.props.setVenues(newSearch)
+      this.props.updateSearch(newSearch)
 
-      })
-    }
+  }
 
   render() {
     const { width } = this.state;
@@ -75,9 +76,9 @@ class Filters extends Component {
         <div>
           <div className={row_one_classes}>
             <div className="type-buttons">
-              <div onClick={this.toggleType} data-type="restaurants" className={(this.state.restaurants) ? "type-button type-selected" : "type-button type-deselected"}>Restaurants</div>
-              <div onClick={this.toggleType} data-type="cafes" className={(this.state.cafes) ? "type-button type-selected" : " type-button type-deselected"}>Cafes</div>
-              <div onClick={this.toggleType} data-type="bars" className={(this.state.bars) ? "type-button type-selected" : " type-button type-deselected"}>Bars</div>
+              <div onClick={this.toggleType} data-type="restaurants" className={(this.props.search_obj.restaurants) ? "type-button type-selected" : "type-button type-deselected"}>Restaurants</div>
+              <div onClick={this.toggleType} data-type="cafes" className={(this.props.search_obj.cafes) ? "type-button type-selected" : " type-button type-deselected"}>Cafes</div>
+              <div onClick={this.toggleType} data-type="bars" className={(this.props.search_obj.bars) ? "type-button type-selected" : " type-button type-deselected"}>Bars</div>
             </div>
             <div className="price-slider-cntnr">
               <p className="price-icon">£</p>
@@ -93,9 +94,9 @@ class Filters extends Component {
         </div>
         <div className={toggles_classes}>
 
-          <div onClick={this.toggleMode} className={(this.state.pickup) ? "eatmode-toggle eatmode-selected" : "eatmode-toggle eatmode-deselected"}><GiWalk className="toggle-icon"/> Pick Up</div>
-          <div onClick={this.toggleMode} className={(!this.state.pickup) ? "eatmode-toggle eatmode-selected" : "eatmode-toggle eatmode-deselected"}><GiTabletopPlayers className="toggle-icon"/> Eat In</div>
-          <div className="eatmode-toggle" id="map-toggle" onClick={this.props.toggleMap}>{(this.props.map_state) ? "List" : "Map"}</div>
+          <div  className={"eatmode-toggle eatmode-deselected"}><GiWalk className="toggle-icon"/> <div>Pick Up</div></div>
+          {/*<div onClick={this.toggleMode} className={(!this.state.pickup) ? "eatmode-toggle eatmode-selected" : "eatmode-toggle eatmode-deselected"}><GiTabletopPlayers className="toggle-icon"/> Eat In</div>*/}
+          <div className="mapbtn-toggle" id="map-toggle" onClick={this.props.toggleMap}>{(this.props.map_state) ? "List" : "Map"}</div>
 
         </div>
       </div>
@@ -105,13 +106,13 @@ class Filters extends Component {
 
 function mapStateToProps(state) {
   return {
-    map_state: state.map
+    map_state: state.map, search_obj: state.search_obj
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    {toggleMap: toggleMap },
+    {toggleMap: toggleMap, toggleFilter: toggleFilter, updateSearch: updateSearch, setVenues: setVenues },
      dispatch);
 }
 

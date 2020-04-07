@@ -2,37 +2,27 @@
     "paths": [
         {
             "name": "/checkout",
-            "lambdaFunction": "stripeCheckout",
-            "privacy": {
-                "open": true
-            }
-        },
-        {
-            "name": "/webhook",
-            "lambdaFunction": "stripeWebhook",
+            "lambdaFunction": "stCheckout",
             "privacy": {
                 "open": true
             }
         },
         {
             "name": "/session",
-            "lambdaFunction": "stripeSession",
+            "lambdaFunction": "stSession",
             "privacy": {
                 "open": true
             }
         }
     ],
-    "resourceName": "stripeapi",
-    "apiName": "stripeapi",
+    "resourceName": "stripe",
+    "apiName": "stripe",
     "functionArns": [
         {
-            "lambdaFunction": "stripeCheckout"
+            "lambdaFunction": "stCheckout"
         },
         {
-            "lambdaFunction": "stripeWebhook"
-        },
-        {
-            "lambdaFunction": "stripeSession"
+            "lambdaFunction": "stSession"
         }
     ],
     "privacy": {
@@ -44,7 +34,7 @@
     "dependsOn": [
         {
             "category": "function",
-            "resourceName": "stripeCheckout",
+            "resourceName": "stCheckout",
             "attributes": [
                 "Name",
                 "Arn"
@@ -52,20 +42,12 @@
         },
         {
             "category": "function",
-            "resourceName": "stripeWebhook",
-            "attributes": [
-                "Name",
-                "Arn"
-            ]
-        },
-        {
-            "category": "function",
-            "resourceName": "stripeSession",
+            "resourceName": "stSession",
             "attributes": [
                 "Name",
                 "Arn"
             ]
         }
     ],
-    "uuid": "dfdf1dcb"
+    "uuid": "093de34c"
 }

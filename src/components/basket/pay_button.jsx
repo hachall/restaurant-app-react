@@ -26,8 +26,6 @@ class PayButton extends Component {
   }
 
   render() {
-    console.log(this.state.stripe)
-
     return (
       <StripeProvider stripe={this.state.stripe}>
           <Elements>

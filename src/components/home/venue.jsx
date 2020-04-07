@@ -18,7 +18,7 @@ class Venue extends Component {
             </div>
             <h2 className="card-venue-pricing">
               <StarRatings
-                rating={4.5}
+                rating={this.props.venue.rating}
                 starRatedColor="#EEC0DB"
                 starEmptyColor="#5D576B"
                 numberOfStars={5}

@@ -14,6 +14,21 @@
             "build": true,
             "providerPlugin": "awscloudformation",
             "service": "Lambda"
+        },
+        "checkoutStripe": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda"
+        },
+        "stCheckout": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda"
+        },
+        "stSession": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda"
         }
     },
     "api": {
@@ -40,6 +55,28 @@
                 {
                     "category": "function",
                     "resourceName": "stripeSession",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                }
+            ]
+        },
+        "stripe": {
+            "service": "API Gateway",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [
+                {
+                    "category": "function",
+                    "resourceName": "stCheckout",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "stSession",
                     "attributes": [
                         "Name",
                         "Arn"
