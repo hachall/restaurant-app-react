@@ -4,8 +4,8 @@ const awsconfig = {
     "aws_project_region": "eu-west-2",
     "aws_cloud_logic_custom": [
         {
-            "name": "stripeapi",
-            "endpoint": "https://h7i24jzoo2.execute-api.eu-west-2.amazonaws.com/dev",
+            "name": "stripe",
+            "endpoint": "https://l9wok1fv6g.execute-api.eu-west-2.amazonaws.com/dev",
             "region": "eu-west-2"
         }
     ]
