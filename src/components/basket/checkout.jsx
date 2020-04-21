@@ -30,7 +30,7 @@ class Checkout extends Component {
       <div>
 
         <PayButton
-          stripePublicKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
+          stripePublicKey={"pk_test_ETk8rfAJNbrGGITQTWn9J90P00lMf7VhSa"}
           apiName="stripe"
           apiEndpoint="/checkout"
           items={this.getItems('gbp')}
