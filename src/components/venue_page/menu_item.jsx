@@ -67,7 +67,7 @@ class MenuItem extends Component {
       <div>
         <div className="menu-item">
           <div className="menu-item-left">
-            <div className="" key={this.props.name}><span className="item-name">{`${this.props.name}:`}</span><span className="price-bold">{`£${this.props.price}`}</span></div>
+            <div className="" key={this.props.name}><span className="item-name">{`${this.props.name}:`}</span><span className="price-bold">{`£${this.props.price.toFixed(2)}`}</span></div>
           </div>
           <div className="menu-item-right">
             <TiMinusOutline className={minus_classes} onClick={this.decrementValue}/>

@@ -29,7 +29,7 @@ class Basket extends Component {
       <div className={classes}>
         <div className="basket-details">
           <div className="basket-left">Basket:</div>
-          <div className="basket-right">{`£${this.props.basket.total}`}</div>
+          <div className="basket-right">{`£${this.props.basket.total.toFixed(2)}`}</div>
         </div>
         <Checkout disabled={false} link={`${base}${this.getLocation()}`} classname={"co-button"} comp={<p className="">Go To Checkout</p>}/>
       </div>
