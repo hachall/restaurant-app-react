@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 
-import VenueList from './venue_list'
+import Filters from './filters'
+import HomeMain from './home_main'
 
 class Home extends Component {
 
   render() {
 
     return (
-
-      <VenueList/>
+      <div>
+        <Filters/>
+        <HomeMain/>
+      </div>
     )
   }
 }
