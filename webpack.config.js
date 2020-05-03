@@ -4,7 +4,7 @@ const Dotenv = require('dotenv-webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
 const webpack = require('webpack');
 const BrotliPlugin = require('brotli-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   output: {
@@ -18,8 +18,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: '!!html-loader!templates/index.html'
     }),
-    new Dotenv(),
-    new BundleAnalyzerPlugin(),
+    new Dotenv()
     new CompressionPlugin({
     filename: '[path].gz[query]',
     algorithm: 'gzip',
