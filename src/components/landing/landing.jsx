@@ -75,7 +75,7 @@ class LandingPage extends Component {
       height: "100%",
       backgroundSize: (isMobile) ? "cover" : "100% 100%",
       backgroundRepeat: 'no-repeat',
-      backgroundImage: "url(https://restaurant-app.s3.eu-west-2.amazonaws.com/New+Project.png)"
+      backgroundImage: "url(https://restaurant-app.s3.eu-west-2.amazonaws.com/New+Project.webp)"
     };
 
     if (this.state.redirect) {
