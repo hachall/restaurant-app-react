@@ -8,7 +8,6 @@ import { setVenues } from '../../actions'
 import PropTypes from 'prop-types';
 
 import { GiWalk } from "react-icons/gi";
-import { GiTabletopPlayers } from "react-icons/gi";
 import { GiTreasureMap } from "react-icons/gi";
 
 import RangeSlider from "./slider"
@@ -95,7 +94,6 @@ class Filters extends Component {
         <div className={toggles_classes}>
 
           <div  className={"eatmode-toggle eatmode-deselected"}><GiWalk className="toggle-icon"/> <div>Pick Up</div></div>
-          {/*<div onClick={this.toggleMode} className={(!this.state.pickup) ? "eatmode-toggle eatmode-selected" : "eatmode-toggle eatmode-deselected"}><GiTabletopPlayers className="toggle-icon"/> Eat In</div>*/}
           <div className="mapbtn-toggle" id="map-toggle" onClick={this.props.toggleMap}>{(this.props.map_state) ? "List" : "Map"}</div>
 
         </div>

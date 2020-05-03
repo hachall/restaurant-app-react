@@ -4,7 +4,7 @@ import '../assets/stylesheets/application.scss';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import { Provider } from 'react-redux';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { logger } from 'redux-logger';
 import reduxPromise from 'redux-promise';
 
@@ -67,7 +67,8 @@ const initialState = {
   search_obj: base_search
 };
 
-const middlewares = applyMiddleware(reduxPromise, logger);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const middlewares = composeEnhancers(applyMiddleware(reduxPromise, logger));
 
 import Router from './router'
 import Location from './location'
