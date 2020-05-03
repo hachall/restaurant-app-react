@@ -18,7 +18,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: '!!html-loader!templates/index.html'
     }),
-    new Dotenv()
+    new Dotenv(),
     new CompressionPlugin({
     filename: '[path].gz[query]',
     algorithm: 'gzip',
