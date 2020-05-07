@@ -67,8 +67,9 @@ const initialState = {
   search_obj: base_search
 };
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const middlewares = composeEnhancers(applyMiddleware(reduxPromise, logger));
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const middlewares = composeEnhancers(applyMiddleware(reduxPromise, logger));
+const middlewares = applyMiddleware(reduxPromise, logger);
 
 import Router from './router'
 import Location from './location'
