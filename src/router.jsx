@@ -25,7 +25,7 @@ class Router extends Component {
 
     // const routeComponents = routes.map(({path, component}, key) => <Route exact path={path} component={component} key={key} />);
     return (
-      <Suspense fallback={<div>this.loader()</div>}>
+      <Suspense fallback={<div>{this.loader()}</div>}>
         <BrowserRouter>
             <NavBar/>
             <Switch>
