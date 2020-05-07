@@ -7,7 +7,6 @@ import {withRouter} from 'react-router-dom';
 
 import { GiHamburger } from "react-icons/gi";
 import { GiShoppingCart } from "react-icons/gi";
-import { GiHamburgerMenu } from "react-icons/gi";
 import NavBarSearch from './navbar_search'
 
 import Checkout from './basket/checkout'
@@ -52,11 +51,10 @@ class NavBar extends Component {
     return pathname
   }
 
-
   render() {
     const { width } = this.state;
     const isMobile = width <= 600;
-    let base = "http://localhost:8081"
+    let base = "https://test.dolxjcfav4ei2.amplifyapp.com"
 
     return (
       <div className="navbarr">
@@ -69,20 +67,14 @@ class NavBar extends Component {
         <div className=" navbar-right">
           {(isMobile) ?
             <div>
-              <Checkout disabled={this.props.basket.total == 0} link={`${base}${this.getLocation()}`} classname="" comp={this.basketComp()}/>
+              <Checkout disabled={this.props.basket.total == 0} link={this.getLocation()} classname="" comp={this.basketComp()}/>
 
             </div>
 
             :
 
             <div className="navbar-section">
-              {/*<Link to="/basket">
-                <div className="navbar-basket">
-                  <GiShoppingCart className="nav-basket-icon navbar-icon"/>
-                  <div className="basket-cost">{`£${this.props.basket.total}`}</div>
-                </div>
 
-              </Link>*/}
               <Checkout disabled={this.props.basket.total == 0} link={`${base}${this.getLocation()}`} classname="" comp={this.basketComp()}/>
 
             </div>

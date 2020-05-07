@@ -24,12 +24,13 @@ class Checkout extends Component {
 
 
   render() {
+    let base = "https://test.dolxjcfav4ei2.amplifyapp.com"
 
     return (
       <div>
 
         <PayButton
-          stripePublicKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
+          stripePublicKey={"pk_test_ETk8rfAJNbrGGITQTWn9J90P00lMf7VhSa"}
           apiName="stripe"
           apiEndpoint="/checkout"
           items={this.getItems('gbp')}
@@ -38,8 +39,8 @@ class Checkout extends Component {
           typeid={this.props.basket.typeid}
           connectedAccount={this.props.basket.venue_stripe_acct}
           amount={this.props.basket.total}
-          success_url={`http://localhost:8081/success?session_id={CHECKOUT_SESSION_ID}&acct=${this.props.basket.venue_stripe_acct}`}
-          cancel_url={this.props.link}
+          success_url={`${base}/success?session_id={CHECKOUT_SESSION_ID}&acct=${this.props.basket.venue_stripe_acct}`}
+          cancel_url={`${base}${this.props.link}`}
           classname={this.props.classname}
           comp={this.props.comp}
           disabled={this.props.disabled}
