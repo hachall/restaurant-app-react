@@ -68,7 +68,7 @@ const initialState = {
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const middlewares = composeEnhancers(applyMiddleware(reduxPromise, logger));
+const middlewares = composeEnhancers(applyMiddleware(reduxPromise, logger ));
 
 import Router from './router'
 
