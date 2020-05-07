@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, lazy, Suspense } from 'react'
 import ReactDOM from 'react-dom';
 import '../assets/stylesheets/application.scss';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -72,15 +72,20 @@ const initialState = {
 const middlewares = applyMiddleware(reduxPromise, logger);
 
 import Router from './router'
-import Location from './location'
+
+const Location = lazy(() => import('./location'));
+
+import Loader from './loader'
 
 const root = document.getElementById('root');
 if (root) {
   ReactDOM.render(
-    <Provider store={createStore(reducers, initialState, middlewares)}>
-      <Location />
-      <Router />
-    </Provider>
+    <Suspense fallback={<Loader/>}>
+      <Provider store={createStore(reducers, initialState, middlewares)}>
+        <Location />
+        <Router />
+      </Provider>
+    </Suspense>
     ,root);
 }
 
