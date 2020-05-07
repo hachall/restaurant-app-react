@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, lazy, Suspense } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
@@ -9,7 +9,10 @@ import { emptyMenu } from '../../actions';
 
 import VenueContent from './venue_content'
 import Basket from '../basket/basket'
-import MapBox from '../map/map_box'
+
+const MapBox = lazy(() => import('../map/map_box'));
+
+import Loader from '../loader'
 
 class VenuePage extends Component {
   constructor() {
@@ -67,7 +70,9 @@ class VenuePage extends Component {
             <div className="venue-page-left">
               <img src={this.props.venue.imgurl} alt=""/>
               <div className="venue-page-mapbox">
-                <MapBox venues={[this.props.venue]} center={[this.props.venue.longitude, this.props.venue.latitude]} zoom={[16]} />
+                <Suspense fallback={<Loader/>}>
+                  <MapBox venues={[this.props.venue]} center={[this.props.venue.longitude, this.props.venue.latitude]} zoom={[16]} />
+                </Suspense>
               </div>
               <Basket mobile={false} venue={this.props.venue.name}/>
             </div>
