@@ -67,7 +67,7 @@ class NavBar extends Component {
         <div className=" navbar-right">
           {(isMobile) ?
             <div>
-              <Checkout disabled={this.props.basket.total == 0} link={this.getLocation()} classname="" comp={this.basketComp()}/>
+              <Checkout disabled={this.props.basket.total == 0} link_loc={this.getLocation()} classname="" comp={this.basketComp()}/>
 
             </div>
 
@@ -75,7 +75,7 @@ class NavBar extends Component {
 
             <div className="navbar-section">
 
-              <Checkout disabled={this.props.basket.total == 0} link={`${base}${this.getLocation()}`} classname="" comp={this.basketComp()}/>
+              <Checkout disabled={this.props.basket.total == 0} link_loc={this.getLocation()} classname="" comp={this.basketComp()}/>
 
             </div>
 
