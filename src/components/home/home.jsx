@@ -1,7 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, lazy, Suspense } from 'react'
 
-import Filters from './filters'
-import HomeMain from './home_main'
+const Filters = lazy(() => import('./filters'));
+const HomeMain = lazy(() => import('./home_main'));
+
+import Loader from '../loader'
 
 class Home extends Component {
 
@@ -9,8 +11,10 @@ class Home extends Component {
 
     return (
       <div>
-        <Filters/>
-        <HomeMain/>
+        <Suspense fallback={<Loader/>}>
+          <Filters/>
+          <HomeMain/>
+        </Suspense>
       </div>
     )
   }
