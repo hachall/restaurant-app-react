@@ -8,7 +8,7 @@ import VenuePage from './components/venue_page/venue_page';
 import Success from './components/basket/success';
 import LandingPage from './components/landing/landing';
 import NavBar from './components/navbar';
-
+import ErrorPage from './components/landing/error';
 
 
 class Router extends Component {
@@ -25,6 +25,7 @@ class Router extends Component {
             <Route  path="/home" component={Home}  />
             <Route  path="/venues/:venueid/:typeid" component={VenuePage}  />
             <Route  path="/success" component={Success}  />
+            <Route component={ErrorPage} />
           </Switch>
       </BrowserRouter>
     )
