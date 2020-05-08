@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, lazy, Suspense } from 'react'
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -8,7 +8,9 @@ import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 
 import { fetchVenue } from '../../actions';
 
-import MapBox from '../map/map_box'
+const MapBox = lazy(() => import('../map/map_box'));
+
+import Loader from '../loader'
 
 
 class Success extends Component {
@@ -65,6 +67,7 @@ class Success extends Component {
     }
 
     return (
+      <Suspense fallback={<Loader/>}>
       <div className="success-page">
         <div className="sucess-box">
           <h1 className="order-code">Order Code: {this.state.session.id.slice(-8)} </h1>
@@ -86,12 +89,15 @@ class Success extends Component {
 
           </div>
           <div className="success-box-map">
+          <Suspense fallback={<Loader/>}>
             <MapBox venues={this.props.venues} center={[this.props.venues[0].longitude, this.props.venues[0].latitude]} zoom={[16]}/>
+          </Suspense>
           </div>
 
         </div>
 
       </div>
+      </Suspense>
 
     )
   }

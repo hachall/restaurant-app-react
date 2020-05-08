@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, lazy, Suspense } from 'react'
 import ReactDOM from 'react-dom';
 import '../assets/stylesheets/application.scss';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -67,19 +67,26 @@ const initialState = {
   search_obj: base_search
 };
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const middlewares = composeEnhancers(applyMiddleware(reduxPromise, logger));
+
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const middlewares = composeEnhancers(applyMiddleware(reduxPromise, logger));
+const middlewares = applyMiddleware(reduxPromise, logger);
 
 import Router from './router'
-import Location from './location'
+
+const Location = lazy(() => import('./location'));
+
+import Loader from './loader'
 
 const root = document.getElementById('root');
 if (root) {
   ReactDOM.render(
-    <Provider store={createStore(reducers, initialState, middlewares)}>
-      <Location />
-      <Router />
-    </Provider>
+    <Suspense fallback={<Loader/>}>
+      <Provider store={createStore(reducers, initialState, middlewares)}>
+        <Location />
+        <Router />
+      </Provider>
+    </Suspense>
     ,root);
 }
 

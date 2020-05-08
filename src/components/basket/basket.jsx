@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component, lazy, Suspense } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 
-import Checkout from './checkout'
+const Checkout = lazy(() => import('./checkout'));
+
+import Loader from '../loader'
 
 class Basket extends Component {
 
@@ -25,13 +27,15 @@ class Basket extends Component {
 
 
     return (
+      <Suspense fallback={<Loader/>}>
       <div className={classes}>
         <div className="basket-details">
           <div className="basket-left">Basket:</div>
           <div className="basket-right">{`£${this.props.basket.total.toFixed(2)}`}</div>
         </div>
-        <Checkout disabled={false} link={this.getLocation()} classname={"co-button"} comp={<p className="">Go To Checkout</p>}/>
+        <Checkout disabled={false} link_loc={this.getLocation()} classname={"co-button"} comp={<p className="">Go To Checkout</p>}/>
       </div>
+      </Suspense>
     )
   }
 }

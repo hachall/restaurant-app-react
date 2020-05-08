@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component, lazy, Suspense } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {Link} from 'react-router-dom'
 
 import { emptyVenues } from '../../actions';
 
-import VenueList from './venue_list'
+const VenueList = lazy(() => import('./venue_list'));
+
+import Loader from '../loader'
 
 class VenuesContainer extends Component {
 
@@ -23,7 +25,9 @@ class VenuesContainer extends Component {
             <span className="change-bracket">(</span><Link to="/" className="change-link" onClick={this.handleClick}>change</Link><span className="change-bracket">)</span>
           </div>
         </div>
-        <VenueList/>
+        <Suspense fallback={<Loader/>}>
+          <VenueList/>
+        </Suspense>
       </div>
     )
   }

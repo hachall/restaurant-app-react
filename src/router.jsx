@@ -11,6 +11,8 @@ const LandingPage = lazy(() => import('./components/landing/landing'));
 const NavBar = lazy(() => import('./components/navbar'));
 const ErrorPage = lazy(() => import('./components/landing/error'));
 
+import Loader from './loader'
+
 
 class Router extends Component {
 
@@ -25,7 +27,7 @@ class Router extends Component {
 
     // const routeComponents = routes.map(({path, component}, key) => <Route exact path={path} component={component} key={key} />);
     return (
-      <Suspense fallback={<div>{this.loader()}</div>}>
+      <Suspense fallback={<Loader/>}>
         <BrowserRouter>
             <NavBar/>
             <Switch>

@@ -1,10 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component, lazy, Suspense } from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import VenuesContainer from './venues_container'
-import MapBox from '../map/map_box'
+
+const MapBox = lazy(() => import('../map/map_box'));
+
+import Loader from '../loader'
+import Loader2 from '../loader2'
 
 class HomeDesktop extends Component {
 
@@ -23,7 +27,9 @@ class HomeDesktop extends Component {
       <div className="home-desktop">
         <VenuesContainer/>
         <div className={map_classes}>
-          <MapBox venues={this.props.venues || []} center={this.props.center} zoom={(this.props.center == [0,0]) ? [0] : [16]}/>
+          <Suspense fallback={<Loader2/>}>
+            <MapBox venues={this.props.venues || []} center={this.props.center} zoom={(this.props.center == [0,0]) ? [0] : [16]}/>
+          </Suspense>
         </div>
 
       </div>
