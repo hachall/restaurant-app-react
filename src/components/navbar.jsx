@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, lazy, Suspense } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -9,7 +9,9 @@ import { GiHamburger } from "react-icons/gi";
 import { GiShoppingCart } from "react-icons/gi";
 import NavBarSearch from './navbar_search'
 
-import Checkout from './basket/checkout'
+const Checkout = lazy(() => import('./basket/checkout'));
+
+import Loader from './loader'
 
 class NavBar extends Component {
   constructor() {
@@ -67,16 +69,17 @@ class NavBar extends Component {
         <div className=" navbar-right">
           {(isMobile) ?
             <div>
-              <Checkout disabled={this.props.basket.total == 0} link_loc={this.getLocation()} classname="" comp={this.basketComp()}/>
-
+              <Suspense fallback={<Loader/>}>
+                <Checkout disabled={this.props.basket.total == 0} link_loc={this.getLocation()} classname="" comp={this.basketComp()}/>
+              </Suspense>
             </div>
 
             :
 
             <div className="navbar-section">
-
-              <Checkout disabled={this.props.basket.total == 0} link_loc={this.getLocation()} classname="" comp={this.basketComp()}/>
-
+              <Suspense fallback={<Loader/>}>
+                <Checkout disabled={this.props.basket.total == 0} link_loc={this.getLocation()} classname="" comp={this.basketComp()}/>
+              </Suspense>
             </div>
 
 

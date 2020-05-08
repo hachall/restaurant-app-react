@@ -13,6 +13,8 @@ class Home extends Component {
       <div>
         <Suspense fallback={<Loader/>}>
           <Filters/>
+        </Suspense>
+        <Suspense fallback={<Loader/>}>
           <HomeMain/>
         </Suspense>
       </div>
