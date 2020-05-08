@@ -7,9 +7,9 @@ import {withRouter} from 'react-router-dom';
 
 import { GiHamburger } from "react-icons/gi";
 import { GiShoppingCart } from "react-icons/gi";
-import NavBarSearch from './navbar_search'
 
 const Checkout = lazy(() => import('./basket/checkout'));
+const NavBarSearch = lazy(() => import('./navbar_search'));
 
 import Loader from './loader'
 
@@ -64,7 +64,9 @@ class NavBar extends Component {
           <Link to='/home'>
             <GiHamburger className="navbar-logo navbar-icon"/>
           </Link>
+          <Suspense fallback={<Loader/>}>
           <NavBarSearch/>
+          </Suspense>
         </div>
         <div className=" navbar-right">
           {(isMobile) ?
