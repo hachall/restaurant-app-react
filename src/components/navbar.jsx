@@ -65,7 +65,7 @@ class NavBar extends Component {
             <GiHamburger className="navbar-logo navbar-icon"/>
           </Link>
           <Suspense fallback={<Loader/>}>
-          <NavBarSearch/>
+            <NavBarSearch/>
           </Suspense>
         </div>
         <div className=" navbar-right">
