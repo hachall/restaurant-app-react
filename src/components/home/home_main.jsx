@@ -1,7 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, lazy, Suspense } from 'react'
 
-import HomeMobile from './home_mobile'
-import HomeDesktop from './home_desktop'
+const HomeMobile = lazy(() => import('./home_mobile'));
+const HomeDesktop = lazy(() => import('./home_desktop'));
+
+import Loader from '../loader'
 
 class HomeMain extends Component {
   constructor() {
@@ -31,15 +33,19 @@ class HomeMain extends Component {
 
       if (isMobile) {
         return (
-          <div className="home-main">
-            <HomeMobile/>
-          </div>
+          <Suspense fallback={<Loader/>}>
+            <div className="home-main">
+              <HomeMobile/>
+            </div>
+          </Suspense>
         );
       } else {
         return (
-          <div className="home-main">
-            <HomeDesktop/>
-          </div>
+          <Suspense fallback={<Loader/>}>
+            <div className="home-main">
+              <HomeDesktop/>
+            </div>
+          </Suspense>
         );
       }
   }
