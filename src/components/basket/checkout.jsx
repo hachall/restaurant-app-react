@@ -41,7 +41,7 @@ class Checkout extends Component {
           connectedAccount={this.props.basket.venue_stripe_acct}
           amount={this.props.basket.total}
           success_url={`${base_url}/success?session_id={CHECKOUT_SESSION_ID}&acct=${this.props.basket.venue_stripe_acct}`}
-          cancel_url={`${base_url}${this.props.link}`}
+          cancel_url={`${base_url}${this.props.link_loc}`}
 
           classname={this.props.classname}
           comp={this.props.comp}
