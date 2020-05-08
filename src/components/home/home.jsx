@@ -4,6 +4,7 @@ const Filters = lazy(() => import('./filters'));
 const HomeMain = lazy(() => import('./home_main'));
 
 import Loader from '../loader'
+import Loader2 from '../loader2'
 
 class Home extends Component {
 
@@ -11,10 +12,10 @@ class Home extends Component {
 
     return (
       <div>
-        <Suspense fallback={<Loader/>}>
+        <Suspense fallback={<Loader2/>}>
           <Filters/>
         </Suspense>
-        <Suspense fallback={<Loader/>}>
+        <Suspense fallback={<Loader2/>}>
           <HomeMain/>
         </Suspense>
       </div>

@@ -12,6 +12,7 @@ const Checkout = lazy(() => import('./basket/checkout'));
 const NavBarSearch = lazy(() => import('./navbar_search'));
 
 import Loader from './loader'
+import Loader2 from './loader2'
 
 class NavBar extends Component {
   constructor() {
@@ -64,14 +65,14 @@ class NavBar extends Component {
           <Link to='/home'>
             <GiHamburger className="navbar-logo navbar-icon"/>
           </Link>
-          <Suspense fallback={<Loader/>}>
+          <Suspense fallback={<Loader2/>}>
             <NavBarSearch/>
           </Suspense>
         </div>
         <div className=" navbar-right">
           {(isMobile) ?
             <div>
-              <Suspense fallback={<Loader/>}>
+              <Suspense fallback={<Loader2/>}>
                 <Checkout disabled={this.props.basket.total == 0} link_loc={this.getLocation()} classname="" comp={this.basketComp()}/>
               </Suspense>
             </div>
@@ -79,7 +80,7 @@ class NavBar extends Component {
             :
 
             <div className="navbar-section">
-              <Suspense fallback={<Loader/>}>
+              <Suspense fallback={<Loader2/>}>
                 <Checkout disabled={this.props.basket.total == 0} link_loc={this.getLocation()} classname="" comp={this.basketComp()}/>
               </Suspense>
             </div>

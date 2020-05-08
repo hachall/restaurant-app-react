@@ -8,6 +8,7 @@ import VenuesContainer from './venues_container'
 const MapBox = lazy(() => import('../map/map_box'));
 
 import Loader from '../loader'
+import Loader2 from '../loader2'
 
 class HomeDesktop extends Component {
 
@@ -26,7 +27,7 @@ class HomeDesktop extends Component {
       <div className="home-desktop">
         <VenuesContainer/>
         <div className={map_classes}>
-          <Suspense fallback={<Loader/>}>
+          <Suspense fallback={<Loader2/>}>
             <MapBox venues={this.props.venues || []} center={this.props.center} zoom={(this.props.center == [0,0]) ? [0] : [16]}/>
           </Suspense>
         </div>
