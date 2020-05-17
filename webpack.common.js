@@ -18,6 +18,8 @@ module.exports = {
     }),
     new Dotenv(),
   ],
+  devtool: 'sourcemap',
+
   module: {
     rules: [
       {
