@@ -4,11 +4,10 @@ const Dotenv = require('dotenv-webpack');
 
 
 module.exports = {
-  // entry: {
-  //    app: './src/index.js',
-  //  },
-  mode: 'development',
-
+  // mode: 'development',
+  optimization: {
+    sideEffects: false
+  }
   output: {
     publicPath: '/',
     path: path.resolve(__dirname, 'dist'),
