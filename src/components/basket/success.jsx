@@ -9,9 +9,7 @@ import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 
 import { fetchVenue } from '../../actions';
 
-// const MapBox = lazy(() => import('../map/map_box'));
-
-import Mapbox from '../map/map_box';
+const MapBox = lazy(() => import('../map/map_box'));
 
 import Loader from '../loader'
 
