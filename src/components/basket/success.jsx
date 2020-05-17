@@ -1,5 +1,4 @@
-import React, { Component, lazy, Suspense } from 'react'
-// import 'babel-polyfill';
+import React, { Component, lazy, Suspense } from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
