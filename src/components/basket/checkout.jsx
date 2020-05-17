@@ -24,7 +24,7 @@ class Checkout extends Component {
 
 
   render() {
-    let base_url = "http://production.dolxjcfav4ei2.amplifyapp.com"
+    let base_url = "http://production.dolxjcfav4ei2.amplifyapp.com";
     // let base_url = "https://test.dolxjcfav4ei2.amplifyapp.com"
     // let base_url = "http://localhost:8081"
 
