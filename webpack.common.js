@@ -7,7 +7,7 @@ module.exports = {
   // mode: 'development',
   optimization: {
     sideEffects: false
-  }
+  },
   output: {
     publicPath: '/',
     path: path.resolve(__dirname, 'dist'),
