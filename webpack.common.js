@@ -4,9 +4,9 @@ const Dotenv = require('dotenv-webpack');
 
 
 module.exports = {
-  entry: {
-     app: './src/index.js',
-   },
+  // entry: {
+  //    app: './src/index.js',
+  //  },
   output: {
     publicPath: '/',
     path: path.resolve(__dirname, 'dist'),
