@@ -3,7 +3,7 @@ const common = require('./webpack.common.js');
 
 
 module.exports = merge(common, {
-   mode: 'development',
+   // mode: 'development',
    devServer: {
      contentBase: './dist',
      historyApiFallback: true

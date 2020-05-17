@@ -6,7 +6,7 @@ const BrotliPlugin = require('brotli-webpack-plugin'); //brotli
 
 
 module.exports = merge(common, {
-   mode: 'production',
+   // mode: 'production',
    plugins: [
     new CompressionPlugin({
     filename: '[path].gz[query]',
