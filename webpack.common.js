@@ -1,5 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
+const webpack = require('webpack');
+
 
 module.exports = {
   // entry: {
@@ -13,7 +16,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: '!!html-loader!templates/index.html'
-    })
+    }),
+    new Dotenv(),
   ],
   module: {
     rules: [
