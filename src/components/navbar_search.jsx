@@ -42,8 +42,11 @@ class NavBarSearch extends Component {
   }
 
   handleSubmit(event) {
+    let newSearch = {...this.props.search_obj}
+    newSearch.query = this.state.value;
+    this.props.setVenues(newSearch)
+    this.props.updateSearch(newSearch)
 
-    this.props.setVenues(this.props.search_obj)
     event.preventDefault();
 
   }
@@ -93,6 +96,7 @@ class NavBarSearch extends Component {
   }
 
   render() {
+    // onMouseDown={this.blockDefault}
     return (
       <div className="navsearch-box">
         <form onFocus={this.handleFocus} onBlur={this.handleFocusOut} onSubmit={this.handleSubmit}>
@@ -105,10 +109,13 @@ class NavBarSearch extends Component {
           <div className="suggestions">
             {this.state.suggestions.map((sugg) => {
               return (
-                <div onClick={this.submitWSuggestion} onMouseDown={this.blockDefault} data-suggestion={sugg[0]} className="suggestion" key={sugg[0]}>
-                  <div className="sugg-content">
-                    <div className="sugg-item">{this.BoldedText(sugg[0], this.state.value)}</div>
-                    <div className="sugg-count">({sugg[1]})</div>
+                <div className="suggestion-row" key={sugg[0]}>
+                  <div className="overlay" onClick={this.submitWSuggestion} onMouseDown={this.blockDefault} data-suggestion={sugg[0]}></div>
+                  <div  className="suggestion" >
+                    <div className="sugg-content">
+                      <div className="sugg-item">{this.BoldedText(sugg[0], this.state.value)}</div>
+                      <div className="sugg-count">({sugg[1]})</div>
+                    </div>
                   </div>
                 </div>
               )
